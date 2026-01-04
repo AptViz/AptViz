@@ -43,10 +43,19 @@ export const Footer: React.FC = () => {
         </div>
         
         <div className="mt-20 pt-8 border-t border-slate-200 flex flex-col md:flex-row justify-between text-sm text-slate-500">
-          <p>© 2024 Aptos Foundation. All rights reserved.</p>
+          <p>© 2026 AptViz. All rights reserved.</p>
+          <p>Data provided by Aptos Foundation</p>
           <div className="flex space-x-6 mt-4 md:mt-0">
             <span className="cursor-pointer hover:text-slate-900">Privacy Policy</span>
             <span className="cursor-pointer hover:text-slate-900">Terms of Service</span>
+            <a 
+              href="https://x.com/taeho35858" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="cursor-pointer hover:text-slate-900 transition-colors"
+            >
+              Made by @Ray
+            </a>
           </div>
         </div>
       </div>

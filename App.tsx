@@ -4,6 +4,7 @@ import { AnimatePresence, motion } from 'framer-motion';
 import { Intro } from './components/Intro';
 import { ScrollToTop } from './components/ScrollToTop';
 import { HomePage } from './pages/HomePage';
+import { SearchPage } from './pages/SearchPage';
 import { VisualizationPage, VisualizationDetail } from './pages/VisualizationPage';
 import { DeepDivePage, DeepDiveDetail } from './pages/DeepDivePage';
 import { NewsPage, NewsDetail } from './pages/NewsPage';
@@ -35,6 +36,7 @@ const App: React.FC = () => {
             >
               <Routes>
                 <Route path="/" element={<HomePage />} />
+                <Route path="/search" element={<SearchPage />} />
                 <Route path="/visualization" element={<VisualizationPage />} />
                 <Route path="/visualization/:id" element={<VisualizationDetail />} />
                 <Route path="/deep-dive" element={<DeepDivePage />} />

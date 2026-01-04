@@ -68,7 +68,15 @@ export const Header: React.FC = () => {
           </nav>
 
           <div className="flex items-center gap-6">
-              <button className="w-10 h-10 flex items-center justify-center text-journal-gray hover:text-journal-black transition-colors touch-manipulation">
+              <button 
+                onClick={() => {
+                  setIsMenuOpen(false);
+                  navigate('/search');
+                  window.scrollTo(0, 0);
+                }}
+                className="w-10 h-10 flex items-center justify-center text-journal-gray hover:text-journal-black transition-colors touch-manipulation"
+                aria-label="Search"
+              >
                   <Search size={20} strokeWidth={1.5} />
               </button>
           </div>
