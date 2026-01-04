@@ -1,9 +1,33 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 
 interface IntroProps {
   onEnter: () => void;
 }
+
+const TypingText: React.FC<{ text: string; delay?: number }> = ({ text, delay = 0 }) => {
+  const [displayedText, setDisplayedText] = useState('');
+
+  useEffect(() => {
+    let index = 0;
+    const timer = setTimeout(() => {
+      const interval = setInterval(() => {
+        if (index < text.length) {
+          setDisplayedText(text.slice(0, index + 1));
+          index++;
+        } else {
+          clearInterval(interval);
+        }
+      }, 50);
+
+      return () => clearInterval(interval);
+    }, delay);
+
+    return () => clearTimeout(timer);
+  }, [text, delay]);
+
+  return <>{displayedText}</>;
+};
 
 export const Intro: React.FC<IntroProps> = ({ onEnter }) => {
   return (
@@ -38,11 +62,14 @@ export const Intro: React.FC<IntroProps> = ({ onEnter }) => {
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
+          transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
         >
             <h1 className="font-serif text-6xl md:text-8xl lg:text-9xl font-medium tracking-tight text-journal-black leading-none mb-6">
-              The Speed<br/>
-              <span className="italic">of Thought</span>
+              <TypingText text="The Speed" delay={200} />
+              <br/>
+              <span className="italic">
+                <TypingText text="of Thought" delay={800} />
+              </span>
             </h1>
         </motion.div>
 
@@ -50,7 +77,7 @@ export const Intro: React.FC<IntroProps> = ({ onEnter }) => {
           className="text-journal-gray font-sans text-sm md:text-base tracking-widest uppercase mt-8"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          transition={{ duration: 1, delay: 0.5, ease: "easeInOut" }}
+          transition={{ duration: 1, delay: 1.5, ease: "easeInOut" }}
         >
           Click to Explore
         </motion.p>

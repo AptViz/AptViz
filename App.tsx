@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { AnimatePresence, motion } from 'framer-motion';
 import { Intro } from './components/Intro';
+import { ScrollToTop } from './components/ScrollToTop';
 import { HomePage } from './pages/HomePage';
 import { VisualizationPage, VisualizationDetail } from './pages/VisualizationPage';
 import { DeepDivePage, DeepDiveDetail } from './pages/DeepDivePage';
@@ -20,6 +21,7 @@ const App: React.FC = () => {
 
   return (
     <BrowserRouter>
+      <ScrollToTop />
       <div className="min-h-screen bg-white text-slate-900 selection:bg-teal-100 selection:text-teal-900">
         <AnimatePresence mode="wait">
           {showIntro ? (
