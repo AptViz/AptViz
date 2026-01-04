@@ -24,6 +24,8 @@ interface DeepDiveItem {
   readTime: string;
   content: string;
   contentKo?: string;
+  thumbnail?: string;
+  heroImage?: string;
 }
 
 const deepDiveItems: DeepDiveItem[] = [
@@ -35,6 +37,8 @@ const deepDiveItems: DeepDiveItem[] = [
     description: 'How Aptos strategically focused on building robust infrastructure in 2025 to prepare for explosive growth in 2026.',
     descriptionKo: '2025년에 탄탄한 인프라 구축에 전략적으로 집중하며 2026년의 폭발적인 성장을 준비한 앱토스의 이야기.',
     readTime: '9 min read',
+    thumbnail: '/images/article-thumbnail.png',
+    heroImage: '/images/article-hero-image.png',
     contentKo: `# 앱토스가 그리는 2026년의 청사진
 
 성공하는 레이어 1 블록체인들을 살펴보면 몇 가지 공통적인 승리 공식이 존재합니다. 확장 가능한 구조, 자본이 막힘없이 흐를 수 있는 깊은 스테이블코인 유동성, 그리고 이러한 기반 위에서 사용자 유입을 폭발적으로 이끌어낼 킬러 앱의 등장입니다.
@@ -66,6 +70,8 @@ const deepDiveItems: DeepDiveItem[] = [
 특히 주목할 점은 사용자가 이더리움이나 솔라나 지갑을 그대로 사용하면서도 앱토스 서비스를 즉시 이용할 수 있게 한 기술입니다. 지갑을 새로 만들거나 코인을 옮겨야 하는 번거로움을 없애 유입 장벽을 완전히 허물었습니다.
 
 ### 2. 쉘비(Shelby): 데이터 인프라
+
+![Shelby: Data Infrastructure](/images/article-shelby-data-infra.png)
 
 그동안 블록체인은 데이터를 기록하는 데는 뛰어났지만, 기록된 데이터를 빠르게 읽어오는 데는 취약했습니다. 쉘비는 AI 모델 학습이나 고화질 영상 스트리밍처럼 엄청난 양의 데이터를 실시간으로 읽어야 하는 서비스들을 위한 저장소입니다.
 
@@ -117,6 +123,8 @@ Decibel is a decentralized exchange targeting **sub-0.02 second execution speeds
 Notably, users can instantly access Aptos services while using their existing Ethereum or Solana wallets. By eliminating the hassle of creating new wallets or transferring coins, entry barriers have been completely removed.
 
 ### 2. Shelby: Data Infrastructure
+
+![Shelby: Data Infrastructure](/images/article-shelby-data-infra.png)
 
 While blockchain has excelled at recording data, it has been weak at quickly retrieving recorded data. Shelby is a storage solution for services requiring real-time reading of massive data amounts, like AI model training or high-quality video streaming.
 
@@ -206,11 +214,22 @@ const DeepDiveCard: React.FC<{ item: DeepDiveItem; index: number }> = ({ item, i
       whileTap={{ scale: 0.98 }}
     >
       <div className="bg-white border border-gray-100 rounded-sm overflow-hidden hover:shadow-xl active:shadow-lg transition-all duration-500 hover:-translate-y-1">
-        <div className={`aspect-[3/2] bg-gradient-to-br ${gradients[index % gradients.length]} relative overflow-hidden`}>
-          <div className="absolute inset-0 flex items-center justify-center opacity-20">
-            <div className="w-32 h-32 border-2 border-gray-400 rounded-full" />
-            <div className="absolute w-24 h-24 border-2 border-gray-400 rounded-full translate-x-8 translate-y-8" />
-          </div>
+        <div className={`aspect-[3/2] bg-gradient-to-br ${gradients[index % gradients.length]} relative overflow-hidden flex items-center justify-center`}>
+          {item.thumbnail && (
+            <img 
+              src={item.thumbnail} 
+              alt={item.title}
+              className="w-full h-full object-contain"
+            />
+          )}
+          {!item.thumbnail && (
+            <>
+              <div className="absolute inset-0 flex items-center justify-center opacity-20">
+                <div className="w-32 h-32 border-2 border-gray-400 rounded-full" />
+                <div className="absolute w-24 h-24 border-2 border-gray-400 rounded-full translate-x-8 translate-y-8" />
+              </div>
+            </>
+          )}
           <div className="absolute top-4 left-4">
             <span className="text-xs font-bold tracking-widest uppercase text-gray-700 bg-white/80 px-2 py-1 rounded">
               {item.category}
@@ -409,6 +428,14 @@ const DeepDiveDetail: React.FC = () => {
                 animate={{ opacity: 1, y: 0 }}
                 key={language}
               >
+                {item.heroImage && (
+                  <img 
+                    src={item.heroImage} 
+                    alt={currentTitle}
+                    className="w-full h-auto rounded-lg mb-8 object-contain"
+                  />
+                )}
+                
                 <div className="flex items-center gap-4 mb-4">
                   <span className="text-xs font-bold tracking-widest uppercase text-journal-accent">
                     {item.category}
@@ -438,13 +465,6 @@ const DeepDiveDetail: React.FC = () => {
                 <p className="font-sans text-xl text-journal-gray font-light mb-12 leading-relaxed">
                   {currentDescription}
                 </p>
-                
-                <div className={`aspect-video bg-gradient-to-br ${gradients[gradientIndex % gradients.length]} rounded-sm mb-12 relative overflow-hidden`}>
-                  <div className="absolute inset-0 flex items-center justify-center opacity-30">
-                    <div className="w-48 h-48 border-2 border-gray-500 rounded-full" />
-                    <div className="absolute w-36 h-36 border-2 border-gray-500 rounded-full translate-x-12 translate-y-12" />
-                  </div>
-                </div>
                 
                 {/* Markdown Content with proper styling */}
                 <div ref={contentRef} className="prose prose-lg max-w-none prose-headings:font-serif prose-headings:text-journal-black prose-p:text-journal-gray prose-p:leading-relaxed prose-strong:text-journal-black prose-li:text-journal-gray">
@@ -525,6 +545,21 @@ const DeepDiveDetail: React.FC = () => {
                       hr: () => (
                         <hr className="my-12 border-gray-200" />
                       ),
+                      img: (props) => {
+                        const { src, alt } = props;
+                        return src ? (
+                          <div className="my-8 flex justify-center">
+                            <img 
+                              src={src} 
+                              alt={alt || 'Article image'} 
+                              className="rounded-lg max-w-full h-auto"
+                              onError={(e) => {
+                                console.error('Image failed to load:', src);
+                              }}
+                            />
+                          </div>
+                        ) : null;
+                      },
                     }}
                   >
                     {currentContent}
