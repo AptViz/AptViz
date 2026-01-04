@@ -68,50 +68,10 @@ const allItems: SearchItem[] = [
   {
     id: '1',
     type: 'deep-dive',
-    category: 'Architecture',
-    title: 'The Evolution of Consensus: From HotStuff to Bullshark',
-    description: 'An in-depth analysis of how DAG-based consensus mechanisms are reducing latency and increasing throughput in the latest network upgrade.',
-    readTime: '12 min read'
-  },
-  {
-    id: '2',
-    type: 'deep-dive',
-    category: 'Language',
-    title: 'Move vs Solidity: A Security-First Comparison',
-    description: 'How the Move language object model provides superior security guarantees for high-value financial protocols.',
-    readTime: '15 min read'
-  },
-  {
-    id: '3',
-    type: 'deep-dive',
-    category: 'Gaming',
-    title: 'Web3 Gaming: Beyond the Hype Cycle',
-    description: 'Why fast finality is the missing link for on-chain gaming experiences, and how Aptos solves the synchronization problem.',
-    readTime: '10 min read'
-  },
-  {
-    id: '4',
-    type: 'deep-dive',
-    category: 'Economics',
-    title: 'Tokenomics Deep Dive: APT Distribution Analysis',
-    description: 'A comprehensive analysis of APT token distribution, vesting schedules, and long-term economic implications.',
-    readTime: '18 min read'
-  },
-  {
-    id: '5',
-    type: 'deep-dive',
-    category: 'Infrastructure',
-    title: 'Running an Aptos Validator: Technical Requirements',
-    description: 'Complete guide to validator node setup, hardware requirements, and operational best practices.',
-    readTime: '20 min read'
-  },
-  {
-    id: '6',
-    type: 'deep-dive',
-    category: 'Development',
-    title: 'Building Your First Move Module',
-    description: 'Step-by-step tutorial for developers new to Move, covering fundamentals through deployment.',
-    readTime: '25 min read'
+    category: 'Strategy',
+    title: "Decibel for Trading, Shelby for Data: Aptos's Blueprint for 2026",
+    description: 'How Aptos strategically focused on building robust infrastructure in 2025 to prepare for explosive growth in 2026. 거래는 데시벨로, 데이터는 쉘비로: 앱토스가 그리는 2026년의 청사진.',
+    readTime: '9 min read'
   },
   // News Items
   {
