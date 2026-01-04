@@ -229,15 +229,21 @@ const NewsCard: React.FC<{ item: NewsItem; index: number }> = ({ item, index }) 
     'bg-gradient-to-br from-gray-50 to-emerald-50'
   ];
   
+  const handleClick = () => {
+    navigate(`/news/${item.id}`);
+    window.scrollTo(0, 0);
+  };
+  
   return (
     <motion.div
-      className="group cursor-pointer"
+      className="group cursor-pointer touch-manipulation"
       initial={{ opacity: 0, y: 30 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ delay: index * 0.1 }}
-      onClick={() => navigate(`/news/${item.id}`)}
+      onClick={handleClick}
+      whileTap={{ scale: 0.98 }}
     >
-      <div className="bg-white border border-gray-100 rounded-sm overflow-hidden hover:shadow-xl transition-all duration-500 hover:-translate-y-1">
+      <div className="bg-white border border-gray-100 rounded-sm overflow-hidden hover:shadow-xl active:shadow-lg transition-all duration-500 hover:-translate-y-1">
         <div className={`aspect-[16/9] ${bgPatterns[index % bgPatterns.length]} relative overflow-hidden`}>
           <div className="absolute inset-0 flex items-center justify-center">
             <div className="w-16 h-16 border border-gray-300 rounded-full opacity-30" />

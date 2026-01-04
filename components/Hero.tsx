@@ -1,7 +1,11 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
+import { ArrowRight } from 'lucide-react';
 
 export const Hero: React.FC = () => {
+  const navigate = useNavigate();
+
   return (
     <section className="relative pt-48 pb-32 md:pt-64 md:pb-40 w-full bg-[#F9F9F9] overflow-hidden">
       
@@ -18,16 +22,34 @@ export const Hero: React.FC = () => {
             </span>
             </motion.div>
 
-            <motion.h1 
-            className="font-serif text-6xl md:text-8xl font-normal text-journal-black mb-12 leading-[1.1]"
-            initial={{ opacity: 0, y: 40 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
-            >
-            Redefining<br />
-            <span className="italic text-journal-accent">Parallel Execution</span><br/>
-            at Scale.
-            </motion.h1>
+            <div className="flex flex-col md:flex-row md:items-end gap-6 md:gap-12 mb-12">
+              <motion.h1 
+                className="font-serif text-6xl md:text-8xl font-normal text-journal-black leading-[1.1]"
+                initial={{ opacity: 0, y: 40 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 1, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
+              >
+                Redefining<br />
+                <span className="italic text-journal-accent">Parallel Execution</span><br/>
+                at Scale.
+              </motion.h1>
+              
+              <motion.button
+                onClick={() => {
+                  navigate('/visualization');
+                  window.scrollTo(0, 0);
+                }}
+                className="group flex items-center gap-3 px-6 py-3 bg-journal-accent text-white rounded-full font-sans text-sm font-medium tracking-wide hover:bg-teal-700 active:bg-teal-800 transition-all duration-300 self-start md:self-end md:mb-4 touch-manipulation"
+                initial={{ opacity: 0, x: -20 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.8, delay: 0.5, ease: [0.22, 1, 0.36, 1] }}
+                whileHover={{ scale: 1.02 }}
+                whileTap={{ scale: 0.95 }}
+              >
+                Explore Visualizations
+                <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
+              </motion.button>
+            </div>
 
             <div className="flex flex-col md:flex-row gap-12 items-start">
                 <motion.p

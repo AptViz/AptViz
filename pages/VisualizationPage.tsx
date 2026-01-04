@@ -114,15 +114,21 @@ const VisualizationCard: React.FC<{ item: VisualizationItem; index: number }> = 
   
   const colors = ['bg-teal-100', 'bg-blue-100', 'bg-purple-100', 'bg-amber-100', 'bg-rose-100', 'bg-emerald-100'];
   
+  const handleClick = () => {
+    navigate(`/visualization/${item.id}`);
+    window.scrollTo(0, 0);
+  };
+  
   return (
     <motion.div
-      className="group cursor-pointer"
+      className="group cursor-pointer touch-manipulation"
       initial={{ opacity: 0, y: 30 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ delay: index * 0.1 }}
-      onClick={() => navigate(`/visualization/${item.id}`)}
+      onClick={handleClick}
+      whileTap={{ scale: 0.98 }}
     >
-      <div className="bg-white border border-gray-100 rounded-sm overflow-hidden hover:shadow-xl transition-all duration-500 hover:-translate-y-1">
+      <div className="bg-white border border-gray-100 rounded-sm overflow-hidden hover:shadow-xl active:shadow-lg transition-all duration-500 hover:-translate-y-1">
         <div className={`aspect-[4/3] ${colors[index % colors.length]} relative overflow-hidden`}>
           <div className="absolute inset-0 opacity-30">
             <svg viewBox="0 0 200 150" className="w-full h-full">

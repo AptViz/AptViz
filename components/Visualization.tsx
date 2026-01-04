@@ -26,7 +26,7 @@ const ChartPath = () => (
       transition={{ duration: 3, delay: 0.5, ease: "easeInOut" }}
     />
     {/* Data Points */}
-    {[300, 600, 900].map((cx, i) => (
+    {[300, 600, 1000].map((cx, i) => (
       <motion.circle
         key={i}
         cx={cx}

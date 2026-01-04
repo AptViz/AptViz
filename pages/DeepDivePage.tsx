@@ -310,15 +310,21 @@ const DeepDiveCard: React.FC<{ item: DeepDiveItem; index: number }> = ({ item, i
     'from-emerald-50 to-green-100'
   ];
   
+  const handleClick = () => {
+    navigate(`/deep-dive/${item.id}`);
+    window.scrollTo(0, 0);
+  };
+  
   return (
     <motion.div
-      className="group cursor-pointer"
+      className="group cursor-pointer touch-manipulation"
       initial={{ opacity: 0, y: 30 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ delay: index * 0.1 }}
-      onClick={() => navigate(`/deep-dive/${item.id}`)}
+      onClick={handleClick}
+      whileTap={{ scale: 0.98 }}
     >
-      <div className="bg-white border border-gray-100 rounded-sm overflow-hidden hover:shadow-xl transition-all duration-500 hover:-translate-y-1">
+      <div className="bg-white border border-gray-100 rounded-sm overflow-hidden hover:shadow-xl active:shadow-lg transition-all duration-500 hover:-translate-y-1">
         <div className={`aspect-[3/2] bg-gradient-to-br ${gradients[index % gradients.length]} relative overflow-hidden`}>
           <div className="absolute inset-0 flex items-center justify-center opacity-20">
             <div className="w-32 h-32 border-2 border-gray-400 rounded-full" />

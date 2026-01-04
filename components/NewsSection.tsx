@@ -1,4 +1,5 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { ScrollReveal } from './ui/ScrollReveal';
 import { NewsItem } from '../types';
@@ -9,24 +10,24 @@ const newsItems: NewsItem[] = [
     category: 'Architecture',
     title: 'The Evolution of Consensus: From HotStuff to Bullshark',
     description: 'An in-depth analysis of how DAG-based consensus mechanisms are reducing latency and increasing throughput in the latest network upgrade.',
-    imageUrl: '', // We will use abstract placeholders
-    date: '4 min read'
+    imageUrl: '',
+    date: '12 min read'
   },
   {
     id: '2',
-    category: 'Ecosystem',
-    title: 'DeFi 2.0: Institutional Grade Lending on Move',
+    category: 'Language',
+    title: 'Move vs Solidity: A Security-First Comparison',
     description: 'How the Move language object model provides superior security guarantees for high-value financial protocols.',
     imageUrl: '', 
-    date: '6 min read'
+    date: '15 min read'
   },
   {
     id: '3',
-    category: 'Perspectives',
+    category: 'Gaming',
     title: 'Web3 Gaming: Beyond the Hype Cycle',
     description: 'Why fast finality is the missing link for on-chain gaming experiences, and how Aptos solves the synchronization problem.',
     imageUrl: '',
-    date: '5 min read'
+    date: '10 min read'
   }
 ];
 
@@ -40,13 +41,21 @@ const AbstractThumbnail = ({ index }: { index: number }) => (
   </div>
 );
 
-const ArticleRow: React.FC<{ item: NewsItem; index: number }> = ({ item, index }) => (
-  <motion.div 
-    className="group flex flex-col md:flex-row gap-8 md:gap-16 py-16 border-b border-gray-100 cursor-pointer"
-    initial={{ opacity: 0, y: 20 }}
-    whileInView={{ opacity: 1, y: 0 }}
-    viewport={{ once: true }}
-  >
+const ArticleRow: React.FC<{ item: NewsItem; index: number; onClick: () => void }> = ({ item, index, onClick }) => {
+  const handleClick = () => {
+    onClick();
+    window.scrollTo(0, 0);
+  };
+
+  return (
+    <motion.div 
+      className="group flex flex-col md:flex-row gap-8 md:gap-16 py-16 border-b border-gray-100 cursor-pointer touch-manipulation"
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      onClick={handleClick}
+      whileTap={{ scale: 0.99 }}
+    >
     <div className="md:w-3/4 pr-4">
       <div className="flex items-center gap-4 mb-4">
          <span className="text-xs font-bold tracking-widest uppercase text-journal-accent">{item.category}</span>
@@ -67,9 +76,12 @@ const ArticleRow: React.FC<{ item: NewsItem; index: number }> = ({ item, index }
       <AbstractThumbnail index={index} />
     </div>
   </motion.div>
-);
+  );
+};
 
 export const NewsSection: React.FC = () => {
+  const navigate = useNavigate();
+
   return (
     <section className="py-32 bg-[#F9F9F9]">
       <div className="container mx-auto px-8 max-w-5xl">
@@ -87,13 +99,24 @@ export const NewsSection: React.FC = () => {
 
         <div>
           {newsItems.map((item, index) => (
-            <ArticleRow key={item.id} item={item} index={index} />
+            <ArticleRow 
+              key={item.id} 
+              item={item} 
+              index={index} 
+              onClick={() => navigate(`/deep-dive/${item.id}`)}
+            />
           ))}
         </div>
 
         <div className="mt-24 text-center">
-            <button className="px-10 py-4 border border-gray-300 rounded-full font-sans text-sm font-bold tracking-widest uppercase hover:bg-journal-black hover:text-white hover:border-journal-black transition-all duration-300">
-                Load More Stories
+            <button 
+              onClick={() => {
+                navigate('/deep-dive');
+                window.scrollTo(0, 0);
+              }}
+              className="px-10 py-4 border border-gray-300 rounded-full font-sans text-sm font-bold tracking-widest uppercase hover:bg-journal-black hover:text-white hover:border-journal-black active:bg-gray-800 transition-all duration-300 touch-manipulation"
+            >
+                View All Articles
             </button>
         </div>
       </div>
