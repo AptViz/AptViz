@@ -49,7 +49,7 @@ export const Footer: React.FC = () => {
             <span className="cursor-pointer hover:text-slate-900">Privacy Policy</span>
             <span className="cursor-pointer hover:text-slate-900">Terms of Service</span>
             <a 
-              href="https://x.com/taeho35858" 
+              href="https://x.com/Rayxxxxn" 
               target="_blank" 
               rel="noopener noreferrer"
               className="cursor-pointer hover:text-slate-900 transition-colors"

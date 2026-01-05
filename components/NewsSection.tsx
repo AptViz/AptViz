@@ -7,37 +7,27 @@ import { NewsItem } from '../types';
 const newsItems: NewsItem[] = [
   {
     id: '1',
-    category: 'Architecture',
-    title: 'The Evolution of Consensus: From HotStuff to Bullshark',
-    description: 'An in-depth analysis of how DAG-based consensus mechanisms are reducing latency and increasing throughput in the latest network upgrade.',
-    imageUrl: '',
-    date: '12 min read'
-  },
-  {
-    id: '2',
-    category: 'Language',
-    title: 'Move vs Solidity: A Security-First Comparison',
-    description: 'How the Move language object model provides superior security guarantees for high-value financial protocols.',
-    imageUrl: '', 
-    date: '15 min read'
-  },
-  {
-    id: '3',
-    category: 'Gaming',
-    title: 'Web3 Gaming: Beyond the Hype Cycle',
-    description: 'Why fast finality is the missing link for on-chain gaming experiences, and how Aptos solves the synchronization problem.',
-    imageUrl: '',
-    date: '10 min read'
+    category: 'Strategy',
+    title: 'Decibel for Trading, Shelby for Data: Aptos\'s Blueprint for 2026',
+    description: 'How Aptos strategically focused on building robust infrastructure in 2025 to prepare for explosive growth in 2026.',
+    imageUrl: '/images/article-thumbnail.png',
+    date: '9 min read'
   }
 ];
 
-const AbstractThumbnail = ({ index }: { index: number }) => (
-  <div className={`w-full h-full bg-gray-100 overflow-hidden relative`}>
-     {/* Generative-ish abstract art */}
-     <div className={`absolute inset-0 opacity-20 mix-blend-multiply ${
-        index === 0 ? 'bg-teal-200' : index === 1 ? 'bg-blue-200' : 'bg-purple-200'
-     }`} />
-     <div className="absolute top-0 right-0 w-full h-full border-[20px] border-white/50 rounded-full scale-150 translate-x-1/2 -translate-y-1/2" />
+const AbstractThumbnail = ({ index, imageUrl }: { index: number; imageUrl?: string }) => (
+  <div className={`w-full h-full bg-gray-100 overflow-hidden relative flex items-center justify-center`}>
+     {imageUrl ? (
+       <img src={imageUrl} alt="" className="w-full h-auto object-contain" />
+     ) : (
+       <>
+         {/* Generative-ish abstract art */}
+         <div className={`absolute inset-0 opacity-20 mix-blend-multiply ${
+            index === 0 ? 'bg-teal-200' : index === 1 ? 'bg-blue-200' : 'bg-purple-200'
+         }`} />
+         <div className="absolute top-0 right-0 w-full h-full border-[20px] border-white/50 rounded-full scale-150 translate-x-1/2 -translate-y-1/2" />
+       </>
+     )}
   </div>
 );
 
@@ -73,7 +63,7 @@ const ArticleRow: React.FC<{ item: NewsItem; index: number; onClick: () => void 
     </div>
     
     <div className="md:w-1/4 aspect-square md:aspect-[4/5] bg-gray-50 relative overflow-hidden hidden md:block transition-transform duration-700 group-hover:scale-[1.02]">
-      <AbstractThumbnail index={index} />
+      <AbstractThumbnail index={index} imageUrl={item.imageUrl} />
     </div>
   </motion.div>
   );
