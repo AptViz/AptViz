@@ -214,21 +214,21 @@ const DeepDiveCard: React.FC<{ item: DeepDiveItem; index: number }> = ({ item, i
       whileTap={{ scale: 0.98 }}
     >
       <div className="bg-white border border-gray-100 rounded-sm overflow-hidden hover:shadow-xl active:shadow-lg transition-all duration-500 hover:-translate-y-1">
-        <div className={`aspect-[3/2] bg-gradient-to-br ${gradients[index % gradients.length]} relative overflow-hidden flex items-center justify-center`}>
-          {item.thumbnail && (
+        <div className={`aspect-[16/9] bg-gradient-to-br ${gradients[index % gradients.length]} relative overflow-hidden`}>
+          {item.thumbnail ? (
             <img 
               src={item.thumbnail} 
-              alt={item.title}
-              className="w-full h-full object-contain"
+              alt=""
+              className="w-full h-full object-cover"
+              onError={(e) => {
+                e.currentTarget.style.display = 'none';
+              }}
             />
-          )}
-          {!item.thumbnail && (
-            <>
-              <div className="absolute inset-0 flex items-center justify-center opacity-20">
-                <div className="w-32 h-32 border-2 border-gray-400 rounded-full" />
-                <div className="absolute w-24 h-24 border-2 border-gray-400 rounded-full translate-x-8 translate-y-8" />
-              </div>
-            </>
+          ) : (
+            <div className="absolute inset-0 flex items-center justify-center opacity-20">
+              <div className="w-32 h-32 border-2 border-gray-400 rounded-full" />
+              <div className="absolute w-24 h-24 border-2 border-gray-400 rounded-full translate-x-8 translate-y-8" />
+            </div>
           )}
           <div className="absolute top-4 left-4">
             <span className="text-xs font-bold tracking-widest uppercase text-gray-700 bg-white/80 px-2 py-1 rounded">
