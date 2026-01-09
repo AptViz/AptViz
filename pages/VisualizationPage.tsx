@@ -1,13 +1,13 @@
 import React from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { motion } from 'framer-motion';
+import { Helmet } from 'react-helmet-async';
 import { Header } from '../components/Header';
 import { Footer } from '../components/Footer';
 import { ScrollReveal } from '../components/ui/ScrollReveal';
 import { ArrowLeft } from 'lucide-react';
 import { visualizationItems, VisualizationItem } from '../visualizations';
 import { RWAPartnershipChart } from '../components/visualizations/RWAPartnershipChart';
-import { useMetaTags } from '../hooks/useMetaTags';
 
 // 커스텀 컴포넌트 매핑
 const customComponents: Record<string, React.FC> = {
@@ -97,14 +97,6 @@ const VisualizationDetail: React.FC = () => {
   const navigate = useNavigate();
   const item = visualizationItems.find(v => v.id === id);
 
-  // 메타 태그 업데이트
-  useMetaTags({
-    title: item?.title || 'Visualization',
-    description: item?.description || 'Interactive visualization',
-    image: item?.thumbnail,
-    url: `https://www.aptviz.xyz/visualization/${id}`,
-  });
-
   if (!item) {
     return (
       <div className="min-h-screen flex items-center justify-center">
@@ -118,6 +110,19 @@ const VisualizationDetail: React.FC = () => {
 
   return (
     <div className="min-h-screen bg-[#F9F9F9]">
+      <Helmet>
+        <title>{item.title} | AptViz - Aptos Visualizations & Analysis</title>
+        <meta name="description" content={item.description} />
+        <meta property="og:type" content="article" />
+        <meta property="og:title" content={item.title} />
+        <meta property="og:description" content={item.description} />
+        {item.thumbnail && <meta property="og:image" content={item.thumbnail} />}
+        <meta property="og:url" content={`https://www.aptviz.xyz/visualization/${id}`} />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content={item.title} />
+        <meta name="twitter:description" content={item.description} />
+        {item.thumbnail && <meta name="twitter:image" content={item.thumbnail} />}
+      </Helmet>
       <Header />
       <main className="pt-32 pb-20">
         <div className="container mx-auto px-8 max-w-6xl">
