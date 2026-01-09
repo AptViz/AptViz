@@ -19,49 +19,9 @@ const allItems: SearchItem[] = [
   {
     id: '1',
     type: 'visualization',
-    category: 'Network',
-    title: 'Block-STM Throughput Analysis',
-    description: 'Real-time visualization of parallel transaction execution performance.',
-    readTime: '5 min read'
-  },
-  {
-    id: '2',
-    type: 'visualization',
-    category: 'Validators',
-    title: 'Global Validator Distribution',
-    description: 'Interactive map showing validator nodes across the world.',
-    readTime: '5 min read'
-  },
-  {
-    id: '3',
-    type: 'visualization',
-    category: 'Performance',
-    title: 'Gas Fee Trends',
-    description: 'Historical analysis of transaction costs over time.',
-    readTime: '5 min read'
-  },
-  {
-    id: '4',
-    type: 'visualization',
-    category: 'DeFi',
-    title: 'TVL Growth Metrics',
-    description: 'Total Value Locked progression across Aptos DeFi protocols.',
-    readTime: '5 min read'
-  },
-  {
-    id: '5',
-    type: 'visualization',
-    category: 'Transactions',
-    title: 'Daily Active Addresses',
-    description: 'User activity patterns and network adoption metrics.',
-    readTime: '5 min read'
-  },
-  {
-    id: '6',
-    type: 'visualization',
-    category: 'Infrastructure',
-    title: 'Node Response Latency',
-    description: 'RPC endpoint performance monitoring dashboard.',
+    category: 'RWA',
+    title: 'RWA Partnership Ecosystem',
+    description: 'Aptos의 Real World Asset 토큰화 파트너십 생태계를 탐험하세요.',
     readTime: '5 min read'
   },
   // Deep Dive Items
