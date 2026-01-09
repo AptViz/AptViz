@@ -5,6 +5,7 @@ export interface VisualizationItem {
   description: string;
   content: string;
   component?: string; // 커스텀 시각화 컴포넌트 이름
+  thumbnail?: string; // 썸네일 이미지 URL
 }
 
 export interface Partner {

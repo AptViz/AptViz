@@ -213,6 +213,7 @@ export const rwaPartnershipsVisualization: VisualizationItem = {
   title: 'RWA Partnership Ecosystem',
   description: 'Aptos의 Real World Asset 토큰화 파트너십 생태계 지도',
   component: 'RWAPartnershipChart',
+  thumbnail: 'https://www.aptviz.xyz/images/RWA.png',
   content: `Aptos는 전통 금융과 블록체인을 연결하는 RWA(Real World Assets) 분야에서 가장 강력한 파트너십 네트워크를 구축하고 있습니다.
 
 **글로벌 자산 운용사 (Asset Managers)**

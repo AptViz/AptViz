@@ -7,6 +7,7 @@ import { ScrollReveal } from '../components/ui/ScrollReveal';
 import { ArrowLeft } from 'lucide-react';
 import { visualizationItems, VisualizationItem } from '../visualizations';
 import { RWAPartnershipChart } from '../components/visualizations/RWAPartnershipChart';
+import { useMetaTags } from '../hooks/useMetaTags';
 
 // 커스텀 컴포넌트 매핑
 const customComponents: Record<string, React.FC> = {
@@ -95,6 +96,14 @@ const VisualizationDetail: React.FC = () => {
   const { id } = useParams();
   const navigate = useNavigate();
   const item = visualizationItems.find(v => v.id === id);
+
+  // 메타 태그 업데이트
+  useMetaTags({
+    title: item?.title || 'Visualization',
+    description: item?.description || 'Interactive visualization',
+    image: item?.thumbnail,
+    url: `https://www.aptviz.xyz/visualization/${id}`,
+  });
 
   if (!item) {
     return (
