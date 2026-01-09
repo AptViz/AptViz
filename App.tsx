@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import { HelmetProvider } from 'react-helmet-async';
 import { AnimatePresence, motion } from 'framer-motion';
 import { Intro } from './components/Intro';
 import { ScrollToTop } from './components/ScrollToTop';
@@ -22,36 +21,34 @@ const App: React.FC = () => {
   }, []);
 
   return (
-    <HelmetProvider>
-      <BrowserRouter>
-        <ScrollToTop />
-        <div className="min-h-screen bg-white text-slate-900 selection:bg-teal-100 selection:text-teal-900">
-          <AnimatePresence mode="wait">
-            {showIntro ? (
-              <Intro key="intro" onEnter={() => setShowIntro(false)} />
-            ) : (
-              <motion.div
-                key="main-content"
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ duration: 0.8 }}
-              >
-                <Routes>
-                  <Route path="/" element={<HomePage />} />
-                  <Route path="/search" element={<SearchPage />} />
-                  <Route path="/visualization" element={<VisualizationPage />} />
-                  <Route path="/visualization/:id" element={<VisualizationDetail />} />
-                  <Route path="/deep-dive" element={<DeepDivePage />} />
-                  <Route path="/deep-dive/:id" element={<DeepDiveDetail />} />
-                  <Route path="/news" element={<NewsPage />} />
-                  <Route path="/news/:id" element={<NewsDetail />} />
-                </Routes>
-              </motion.div>
-            )}
-          </AnimatePresence>
-        </div>
-      </BrowserRouter>
-    </HelmetProvider>
+    <BrowserRouter>
+      <ScrollToTop />
+      <div className="min-h-screen bg-white text-slate-900 selection:bg-teal-100 selection:text-teal-900">
+        <AnimatePresence mode="wait">
+          {showIntro ? (
+            <Intro key="intro" onEnter={() => setShowIntro(false)} />
+          ) : (
+            <motion.div
+              key="main-content"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.8 }}
+            >
+              <Routes>
+                <Route path="/" element={<HomePage />} />
+                <Route path="/search" element={<SearchPage />} />
+                <Route path="/visualization" element={<VisualizationPage />} />
+                <Route path="/visualization/:id" element={<VisualizationDetail />} />
+                <Route path="/deep-dive" element={<DeepDivePage />} />
+                <Route path="/deep-dive/:id" element={<DeepDiveDetail />} />
+                <Route path="/news" element={<NewsPage />} />
+                <Route path="/news/:id" element={<NewsDetail />} />
+              </Routes>
+            </motion.div>
+          )}
+        </AnimatePresence>
+      </div>
+    </BrowserRouter>
   );
 };
 

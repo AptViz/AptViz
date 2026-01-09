@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "vite build",
+    "build": "vite build && node scripts/generate-meta-tags.mjs",
     "preview": "vite preview"
   },
   "dependencies": {
@@ -13,7 +13,6 @@
     "lucide-react": "^0.562.0",
     "react": "^19.2.3",
     "react-dom": "^19.2.3",
-    "react-helmet-async": "^2.0.5",
     "react-markdown": "^10.1.0",
     "react-router-dom": "^7.11.0"
   },
