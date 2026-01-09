@@ -246,7 +246,7 @@ const DeepDiveCard: React.FC<{ item: DeepDiveItem; index: number }> = ({ item, i
             {item.title}
           </h3>
           <p className="font-sans text-sm text-journal-gray font-light line-clamp-3">
-            {item.description}
+            {item.descriptionKo || item.description}
           </p>
         </div>
       </div>
@@ -258,7 +258,7 @@ const DeepDiveDetail: React.FC = () => {
   const { id } = useParams();
   const navigate = useNavigate();
   const item = deepDiveItems.find(d => d.id === id);
-  const [language, setLanguage] = useState<'en' | 'ko'>('en');
+  const [language, setLanguage] = useState<'en' | 'ko'>('ko');
   const [activeSection, setActiveSection] = useState<string>('');
   const [isTocOpen, setIsTocOpen] = useState(true);
   const contentRef = useRef<HTMLDivElement>(null);
