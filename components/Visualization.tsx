@@ -1,6 +1,16 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
+import { ArrowRight } from 'lucide-react';
 import { ScrollReveal } from './ui/ScrollReveal';
+import { totalRWATvl } from '../visualizations';
+
+// TVL 포맷팅 함수
+const formatTVL = (tvl: number): string => {
+  if (tvl >= 1_000_000_000) return `$${(tvl / 1_000_000_000).toFixed(2)}B`;
+  if (tvl >= 1_000_000) return `$${(tvl / 1_000_000).toFixed(1)}M`;
+  return `$${tvl.toLocaleString()}`;
+};
 
 // Simulated artistic chart path
 const ChartPath = () => (
@@ -45,6 +55,8 @@ const ChartPath = () => (
 );
 
 export const Visualization: React.FC = () => {
+  const navigate = useNavigate();
+  
   return (
     <section className="bg-white py-32 border-t border-gray-100">
       <div className="container mx-auto px-8">
@@ -76,7 +88,7 @@ export const Visualization: React.FC = () => {
             </div>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-px bg-gray-100 border border-gray-100">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-px bg-gray-100 border border-gray-100 mb-12">
             {[
                 { label: "Active Validators", value: "108", detail: "Global Distribution" },
                 { label: "Peak TPS", value: "160k+", detail: "Lab Benchmarks" },
@@ -93,6 +105,8 @@ export const Visualization: React.FC = () => {
                 </ScrollReveal>
             ))}
         </div>
+
+        {/* RWA Partnership Highlight - Removed (now in Hero) */}
       </div>
     </section>
   );
