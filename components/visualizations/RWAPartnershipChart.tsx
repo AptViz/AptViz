@@ -67,10 +67,10 @@ const getNodeRadius = (tvl: number, maxTvl: number): number => {
 
 // 카테고리별 레이아웃
 const categoryLayouts: { [key: string]: { cx: number; cy: number; r: number } } = {
-  'asset-managers': { cx: 170, cy: 200, r: 140 },
-  'rwa-platforms': { cx: 500, cy: 180, r: 180 },
-  'infrastructure': { cx: 820, cy: 220, r: 130 },
-  'liquidity-bridge': { cx: 160, cy: 480, r: 140 },
+  'asset-managers': { cx: 170, cy: 200, r: 100 },
+  'rwa-platforms': { cx: 500, cy: 180, r: 130 },
+  'infrastructure': { cx: 820, cy: 220, r: 110 },
+  'liquidity-bridge': { cx: 160, cy: 480, r: 120 },
   'data-analytics': { cx: 500, cy: 530, r: 90 },
   'other': { cx: 800, cy: 500, r: 80 },
 };
