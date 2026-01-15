@@ -16,6 +16,7 @@ interface NewsItem {
   date: { ko: string; en: string };
   content: { ko: string; en: string };
   thumbnail?: string;
+  sourceUrl?: string;
 }
 
 const newsItems: NewsItem[] = [
@@ -32,6 +33,7 @@ const newsItems: NewsItem[] = [
     },
     date: { ko: '2026년 1월 14일', en: 'Jan 14, 2026' },
     thumbnail: '/news/news-1-bitnomial-apt-futures.png',
+    sourceUrl: 'https://bitnomial.com/',
     content: {
       ko: `시카고 기반 암호화폐 거래소 Bitnomial이 레이어-1 블록체인 Aptos의 네이티브 토큰과 연동된 월간 선물 계약을 출시했습니다. 이는 미국 규제 하에서 최초로 출시되는 APT 파생상품입니다.
 
@@ -332,6 +334,26 @@ const NewsDetail: React.FC = () => {
                 );
               })}
             </div>
+
+            {/* Source Link */}
+            {item.sourceUrl && (
+              <div className="mt-12 pt-8 border-t border-gray-200">
+                <h4 className="text-sm font-bold text-gray-500 uppercase tracking-widest mb-3">
+                  {language === 'ko' ? '출처' : 'Source'}
+                </h4>
+                <a
+                  href={item.sourceUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 text-journal-accent hover:text-teal-700 transition-colors"
+                >
+                  <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                  </svg>
+                  <span className="font-medium">{item.sourceUrl.replace(/^https?:\/\//, '').replace(/\/$/, '')}</span>
+                </a>
+              </div>
+            )}
           </motion.article>
         </div>
       </main>
