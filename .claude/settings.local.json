@@ -5,7 +5,8 @@
       "WebSearch",
       "Bash(move \"images\\\\RWA.png\" \"visualization\"\" && move \"imageslogos*\" \"visualizationlogos\"\")",
       "Bash(move \"images\\\\article-thumbnail.png\" \"deepdive\"\" && move \"imagesarticle-hero-image.png\" \"deepdive\"\")",
-      "Bash(move \"images\\\\article-shelby-data-infra.png\" \"deepdive\"\" && echo \"Files moved \")"
+      "Bash(move \"images\\\\article-shelby-data-infra.png\" \"deepdive\"\" && echo \"Files moved \")",
+      "Bash(ls:*)"
     ]
   }
 }
