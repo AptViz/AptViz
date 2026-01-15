@@ -56,54 +56,54 @@ const ChartPath = () => (
 
 export const Visualization: React.FC = () => {
   const navigate = useNavigate();
-  
+
   return (
     <section className="bg-white py-32 border-t border-gray-100">
       <div className="container mx-auto px-8">
         <ScrollReveal width="100%">
-            <div className="flex flex-col md:flex-row justify-between items-end mb-16 border-b border-gray-100 pb-8">
+          <div className="flex flex-col md:flex-row justify-between items-end mb-16 border-b border-gray-100 pb-8">
             <div>
-                <h2 className="font-serif text-4xl md:text-5xl text-journal-black mb-4">
+              <h2 className="font-serif text-4xl md:text-5xl text-journal-black mb-4">
                 Network Telemetry
-                </h2>
-                <p className="font-sans text-journal-gray max-w-lg font-light">
+              </h2>
+              <p className="font-sans text-journal-gray max-w-lg font-light">
                 An artistic representation of Block-STM throughput versus traditional consensus mechanisms.
-                </p>
+              </p>
             </div>
             <div className="font-mono text-xs text-journal-gray mt-4 md:mt-0">
-                LIVE DATA // MAINNET BETA
+              LIVE DATA // MAINNET BETA
             </div>
-            </div>
+          </div>
         </ScrollReveal>
 
         <div className="relative h-[400px] w-full bg-[#FAFAFA] rounded-sm border border-gray-100 p-8 md:p-16 mb-12">
-            <div className="absolute top-8 left-8">
-                <div className="font-serif text-2xl text-journal-black mb-1">Move <span className="italic text-journal-accent">VM</span></div>
-                <div className="text-xs tracking-widest text-gray-400 uppercase">Throughput Analysis</div>
-            </div>
-            <ChartPath />
-            <div className="absolute bottom-8 right-8 text-right">
-                <div className="font-mono text-xs text-gray-400">LATEST BLOCK</div>
-                <div className="font-serif text-3xl">124,592,102</div>
-            </div>
+          <div className="absolute top-8 left-8">
+            <div className="font-serif text-2xl text-journal-black mb-1">Move <span className="italic text-journal-accent">VM</span></div>
+            <div className="text-xs tracking-widest text-gray-400 uppercase">Throughput Analysis</div>
+          </div>
+          <ChartPath />
+          <div className="absolute bottom-8 right-8 text-right">
+            <div className="font-mono text-xs text-gray-400">LATEST BLOCK</div>
+            <div className="font-serif text-3xl">568,960,468</div>
+          </div>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-px bg-gray-100 border border-gray-100 mb-12">
-            {[
-                { label: "Active Validators", value: "108", detail: "Global Distribution" },
-                { label: "Peak TPS", value: "160k+", detail: "Lab Benchmarks" },
-                { label: "Gas Fees", value: "<0.001", detail: "APT per Transaction" }
-            ].map((stat, i) => (
-                <ScrollReveal key={i} delay={i * 0.1} width="100%" className="bg-white p-12 hover:bg-teal-50/10 transition-colors duration-500">
-                    <div className="flex flex-col h-full justify-between min-h-[140px]">
-                        <span className="font-sans text-xs font-bold tracking-widest text-gray-400 uppercase mb-4">{stat.label}</span>
-                        <div>
-                            <span className="font-serif text-5xl text-journal-black block mb-2">{stat.value}</span>
-                            <span className="font-serif italic text-journal-gray">{stat.detail}</span>
-                        </div>
-                    </div>
-                </ScrollReveal>
-            ))}
+          {[
+            { label: "Active Validators", value: "127", detail: "Global Distribution" },
+            { label: "Peak TPS", value: "13,000+", detail: "Lab Benchmarks" },
+            { label: "Gas Fees", value: "<0.0001", detail: "APT per Transaction" }
+          ].map((stat, i) => (
+            <ScrollReveal key={i} delay={i * 0.1} width="100%" className="bg-white p-12 hover:bg-teal-50/10 transition-colors duration-500">
+              <div className="flex flex-col h-full justify-between min-h-[140px]">
+                <span className="font-sans text-xs font-bold tracking-widest text-gray-400 uppercase mb-4">{stat.label}</span>
+                <div>
+                  <span className="font-serif text-5xl text-journal-black block mb-2">{stat.value}</span>
+                  <span className="font-serif italic text-journal-gray">{stat.detail}</span>
+                </div>
+              </div>
+            </ScrollReveal>
+          ))}
         </div>
 
         {/* RWA Partnership Highlight - Removed (now in Hero) */}

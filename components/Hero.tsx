@@ -61,7 +61,7 @@ const slides: SlideItem[] = [
     cardDescription: '앱토스가 그리는 2026년의 청사진',
     stats: [
       { label: 'Block Time', value: '< 50ms', color: 'text-teal-600' },
-      { label: 'Measured TPS', value: '25,000+', color: 'text-indigo-600' },
+      { label: 'Measured TPS', value: '13,000+', color: 'text-indigo-600' },
       { label: 'Capacity Headroom', value: '490x', color: 'text-pink-600' }
     ]
   },
@@ -150,11 +150,10 @@ export const Hero: React.FC = () => {
                   <button
                     key={index}
                     onClick={() => goToSlide(index)}
-                    className={`h-2 rounded-full transition-all duration-300 ${
-                      index === currentSlide
+                    className={`h-2 rounded-full transition-all duration-300 ${index === currentSlide
                         ? 'w-8 bg-journal-accent'
                         : 'w-2 bg-gray-300 hover:bg-gray-400'
-                    }`}
+                      }`}
                   />
                 ))}
               </div>
