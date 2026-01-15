@@ -37,7 +37,7 @@ const VisualizationCard: React.FC<{ item: VisualizationItem; index: number }> = 
           {/* RWA 카드는 이미지 표시 */}
           {item.id === '1' ? (
             <img 
-              src="/images/RWA.png"
+              src="/visualization/RWA.png"
               alt={item.title}
               className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
             />

@@ -10,7 +10,7 @@ const newsItems: NewsItem[] = [
     category: 'Strategy',
     title: 'Decibel for Trading, Shelby for Data: Aptos\'s Blueprint for 2026',
     description: '2025년에 탄탄한 인프라 구축에 전략적으로 집중하며 2026년의 폭발적인 성장을 준비한 앱토스의 이야기.',
-    imageUrl: '/images/article-thumbnail.png',
+    imageUrl: '/deepdive/article-thumbnail.png',
     date: '9 min read'
   }
 ];

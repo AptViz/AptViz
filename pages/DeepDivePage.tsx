@@ -37,8 +37,8 @@ const deepDiveItems: DeepDiveItem[] = [
     description: 'How Aptos strategically focused on building robust infrastructure in 2025 to prepare for explosive growth in 2026.',
     descriptionKo: '2025년에 탄탄한 인프라 구축에 전략적으로 집중하며 2026년의 폭발적인 성장을 준비한 앱토스의 이야기.',
     readTime: '9 min read',
-    thumbnail: '/images/article-thumbnail.png',
-    heroImage: '/images/article-hero-image.png',
+    thumbnail: '/deepdive/article-thumbnail.png',
+    heroImage: '/deepdive/article-hero-image.png',
     contentKo: `# 앱토스가 그리는 2026년의 청사진
 
 성공하는 레이어 1 블록체인들을 살펴보면 몇 가지 공통적인 승리 공식이 존재합니다. 확장 가능한 구조, 자본이 막힘없이 흐를 수 있는 깊은 스테이블코인 유동성, 그리고 이러한 기반 위에서 사용자 유입을 폭발적으로 이끌어낼 킬러 앱의 등장입니다.
@@ -71,7 +71,7 @@ const deepDiveItems: DeepDiveItem[] = [
 
 ### 2. 쉘비(Shelby): 데이터 인프라
 
-![Shelby: Data Infrastructure](/images/article-shelby-data-infra.png)
+![Shelby: Data Infrastructure](/deepdive/article-shelby-data-infra.png)
 
 그동안 블록체인은 데이터를 기록하는 데는 뛰어났지만, 기록된 데이터를 빠르게 읽어오는 데는 취약했습니다. 쉘비는 AI 모델 학습이나 고화질 영상 스트리밍처럼 엄청난 양의 데이터를 실시간으로 읽어야 하는 서비스들을 위한 저장소입니다.
 
@@ -124,7 +124,7 @@ Notably, users can instantly access Aptos services while using their existing Et
 
 ### 2. Shelby: Data Infrastructure
 
-![Shelby: Data Infrastructure](/images/article-shelby-data-infra.png)
+![Shelby: Data Infrastructure](/deepdive/article-shelby-data-infra.png)
 
 While blockchain has excelled at recording data, it has been weak at quickly retrieving recorded data. Shelby is a storage solution for services requiring real-time reading of massive data amounts, like AI model training or high-quality video streaming.
 

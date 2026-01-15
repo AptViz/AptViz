@@ -29,22 +29,22 @@ const TEXTS = {
 
 // 파트너 로고 파일 매핑
 const PARTNER_LOGOS: { [key: string]: string } = {
-  'BlackRock': '/images/logos/blackrock.png',
-  'Franklin Templeton': '/images/logos/franklin-templeton.png',
-  'Securitize': '/images/logos/securitize.png',
-  'PACT': '/images/logos/pact.png',
-  'Ondo Finance': '/images/logos/ondo-finance.png',
-  'KAIO': '/images/logos/kaio.png',
-  'Anchorage Digital': '/images/logos/anchorage-digital.png',
-  'Coinbase Custody': '/images/logos/coinbase.png',
-  'Copper': '/images/logos/copper.png',
-  'BitGo': '/images/logos/bitgo.png',
-  'Tether': '/images/logos/tether.png',
-  'Circle': '/images/logos/circle.png',
-  'LayerZero': '/images/logos/layerzero.png',
-  'Wormhole': '/images/logos/wormhole.png',
-  'RWA.xyz': '/images/logos/rwa-xyz.png',
-  'Petra': '/images/logos/petra.png',
+  'BlackRock': '/visualization/logos/blackrock.png',
+  'Franklin Templeton': '/visualization/logos/franklin-templeton.png',
+  'Securitize': '/visualization/logos/securitize.png',
+  'PACT': '/visualization/logos/pact.png',
+  'Ondo Finance': '/visualization/logos/ondo-finance.png',
+  'KAIO': '/visualization/logos/kaio.png',
+  'Anchorage Digital': '/visualization/logos/anchorage-digital.png',
+  'Coinbase Custody': '/visualization/logos/coinbase.png',
+  'Copper': '/visualization/logos/copper.png',
+  'BitGo': '/visualization/logos/bitgo.png',
+  'Tether': '/visualization/logos/tether.png',
+  'Circle': '/visualization/logos/circle.png',
+  'LayerZero': '/visualization/logos/layerzero.png',
+  'Wormhole': '/visualization/logos/wormhole.png',
+  'RWA.xyz': '/visualization/logos/rwa-xyz.png',
+  'Petra': '/visualization/logos/petra.png',
 };
 
 // TVL 포맷팅 함수
@@ -428,7 +428,7 @@ export const RWAPartnershipChart: React.FC = () => {
             
             {/* 앱토스 로고 이미지 */}
             <image
-              href="/images/logos/aptos.png"
+              href="/visualization/logos/aptos.png"
               x={center.x - 50}
               y={center.y - 50}
               width={100}

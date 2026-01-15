@@ -126,7 +126,7 @@ export const Hero: React.FC = () => {
               {/* Image Section */}
               <div className="relative w-full h-64 bg-gradient-to-br from-teal-50 to-indigo-50 overflow-hidden">
                 <img 
-                  src="/images/RWA.png" 
+                  src="/visualization/RWA.png" 
                   alt="RWA Partnership Ecosystem"
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                 />
