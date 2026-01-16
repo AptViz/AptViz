@@ -11,6 +11,12 @@ const visualizations = [
     description: 'Aptos의 Real World Asset 토큰화 파트너십 생태계 지도',
     thumbnail: 'https://www.aptviz.xyz/visualization/RWA.png',
   },
+  {
+    id: '2',
+    title: 'Active Validators Global Distribution',
+    description: '128개 Aptos Validator 노드의 전세계 분포를 3D 지구본으로 시각화',
+    thumbnail: 'https://www.aptviz.xyz/visualization/Validator.png',
+  },
 ];
 
 const newsItems = [
