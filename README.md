@@ -2,7 +2,7 @@
 
 **Aptos 생태계를 위한 인터랙티브 리서치 저널 & 데이터 시각화 플랫폼**
 
-[![X (Twitter)](https://img.shields.io/badge/X-@TriaThome-000000?style=flat&logo=x)](https://x.com/TriaThome)
+[![X (Twitter)](https://img.shields.io/badge/X-@TriaThome-000000?style=flat&logo=x)](https://x.com/Rayxxxxn)
 [![Telegram](https://img.shields.io/badge/Telegram-@TriaThome-26A5E4?style=flat&logo=telegram)](https://t.me/TriaThome)
 
 </div>
