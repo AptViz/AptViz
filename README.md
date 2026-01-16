@@ -1,6 +1,3 @@
-<div align="center">
-<img width="1200" height="475" alt="AptViz Banner" src="https://github.com/user-attachments/assets/0aa67016-6eaf-458a-adb2-6e31a0763ed6" />
-
 # AptViz - Aptos Research Journal
 
 **Aptos 생태계를 위한 인터랙티브 리서치 저널 & 데이터 시각화 플랫폼**
