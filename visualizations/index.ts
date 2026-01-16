@@ -1,5 +1,6 @@
 import { VisualizationItem } from './types';
 import { rwaPartnershipsVisualization, rwaPartnerCategories, totalRWATvl } from './rwa-partnerships';
+import { validatorsDistributionVisualization, validatorRegions, totalValidators, totalCountries } from './validators-distribution';
 
 // 모든 시각화 항목들을 여기서 export
 // 새로운 시각화를 추가하려면:
@@ -9,9 +10,10 @@ import { rwaPartnershipsVisualization, rwaPartnerCategories, totalRWATvl } from 
 
 export const visualizationItems: VisualizationItem[] = [
   rwaPartnershipsVisualization,
-  // 여기에 새로운 시각화 항목 추가
+  validatorsDistributionVisualization,
 ];
 
 // 개별 데이터도 export (컴포넌트에서 직접 사용 가능)
 export { rwaPartnerCategories, totalRWATvl };
+export { validatorRegions, totalValidators, totalCountries };
 export * from './types';

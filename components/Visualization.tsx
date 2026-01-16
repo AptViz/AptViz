@@ -90,18 +90,37 @@ export const Visualization: React.FC = () => {
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-px bg-gray-100 border border-gray-100 mb-12">
             {[
-                { label: "Active Validators", value: "108", detail: "Global Distribution" },
-                { label: "Peak TPS", value: "160k+", detail: "Lab Benchmarks" },
-                { label: "Gas Fees", value: "<0.001", detail: "APT per Transaction" }
+                { label: "Active Validators", value: "128", detail: "Global Distribution", link: "/visualization/2" },
+                { label: "Peak TPS", value: "160k+", detail: "Lab Benchmarks", link: null },
+                { label: "Gas Fees", value: "<0.001", detail: "APT per Transaction", link: null }
             ].map((stat, i) => (
                 <ScrollReveal key={i} delay={i * 0.1} width="100%" className="bg-white p-12 hover:bg-teal-50/10 transition-colors duration-500">
-                    <div className="flex flex-col h-full justify-between min-h-[140px]">
-                        <span className="font-sans text-xs font-bold tracking-widest text-gray-400 uppercase mb-4">{stat.label}</span>
-                        <div>
-                            <span className="font-serif text-5xl text-journal-black block mb-2">{stat.value}</span>
-                            <span className="font-serif italic text-journal-gray">{stat.detail}</span>
+                    {stat.link ? (
+                        <div
+                            className="flex flex-col h-full justify-between min-h-[140px] cursor-pointer group"
+                            onClick={() => {
+                                navigate(stat.link);
+                                window.scrollTo(0, 0);
+                            }}
+                        >
+                            <span className="font-sans text-xs font-bold tracking-widest text-gray-400 uppercase mb-4 group-hover:text-journal-accent transition-colors">
+                                {stat.label}
+                                <ArrowRight className="inline-block ml-2 w-3 h-3 opacity-0 group-hover:opacity-100 transition-opacity" />
+                            </span>
+                            <div>
+                                <span className="font-serif text-5xl text-journal-black block mb-2 group-hover:text-journal-accent transition-colors">{stat.value}</span>
+                                <span className="font-serif italic text-journal-gray">{stat.detail}</span>
+                            </div>
                         </div>
-                    </div>
+                    ) : (
+                        <div className="flex flex-col h-full justify-between min-h-[140px]">
+                            <span className="font-sans text-xs font-bold tracking-widest text-gray-400 uppercase mb-4">{stat.label}</span>
+                            <div>
+                                <span className="font-serif text-5xl text-journal-black block mb-2">{stat.value}</span>
+                                <span className="font-serif italic text-journal-gray">{stat.detail}</span>
+                            </div>
+                        </div>
+                    )}
                 </ScrollReveal>
             ))}
         </div>
