@@ -1,4 +1,6 @@
 import React, { useRef, useEffect, useState, useMemo, useCallback } from 'react';
+import { createPortal } from 'react-dom';
+import { Maximize2, Minimize2 } from 'lucide-react';
 import Globe from 'react-globe.gl';
 import { motion, AnimatePresence } from 'framer-motion';
 import {
@@ -37,6 +39,7 @@ export const ValidatorsGlobeChart: React.FC = () => {
   const [selectedRegion, setSelectedRegion] = useState<ValidatorRegion | null>(null);
   const [lang, setLang] = useState<'ko' | 'en'>('ko');
   const [isClient, setIsClient] = useState(false);
+  const [isFullscreen, setIsFullscreen] = useState(false);
   const t = TEXTS[lang];
 
   // 클라이언트 사이드 렌더링 확인
@@ -66,6 +69,16 @@ export const ValidatorsGlobeChart: React.FC = () => {
       size: Math.sqrt(region.count) * 0.15 + 0.3,
       altitude: 0.01,
     })), []);
+
+  // HTML 레이블 데이터 (국가명 표시)
+  const htmlElementsData = useMemo(() =>
+    validatorRegions.map(region => ({
+      lat: region.lat,
+      lng: region.lng,
+      name: lang === 'ko' ? region.nameKo : region.name,
+      color: region.color,
+      altitude: 0.03,
+    })), [lang]);
 
   // Arc 데이터
   const arcsData = useMemo(() =>
@@ -196,109 +209,266 @@ export const ValidatorsGlobeChart: React.FC = () => {
       </p>
 
       {/* 3D 지구본 */}
-      <div className="relative bg-gray-900 rounded-xl overflow-hidden" style={{ height: '600px' }}>
-        <Globe
-          ref={globeEl}
-          globeImageUrl="//unpkg.com/three-globe/example/img/earth-blue-marble.jpg"
-          bumpImageUrl="//unpkg.com/three-globe/example/img/earth-topology.png"
-          backgroundImageUrl="//unpkg.com/three-globe/example/img/night-sky.png"
-
-          // 노드 (포인트)
-          pointsData={pointsData}
-          pointLat="lat"
-          pointLng="lng"
-          pointColor="color"
-          pointAltitude="altitude"
-          pointRadius="size"
-          pointLabel={getPointLabel}
-          onPointClick={handlePointClick}
-
-          // Arc (연결선)
-          arcsData={arcsData}
-          arcStartLat="startLat"
-          arcStartLng="startLng"
-          arcEndLat="endLat"
-          arcEndLng="endLng"
-          arcColor="color"
-          arcAltitude="arcAlt"
-          arcStroke={0.5}
-          arcDashLength="arcDashLength"
-          arcDashGap="arcDashGap"
-          arcDashAnimateTime="arcDashAnimateTime"
-
-          // 분위기 효과
-          atmosphereColor="#0d9488"
-          atmosphereAltitude={0.25}
-
-          // 크기
-          width={typeof window !== 'undefined' ? Math.min(window.innerWidth - 64, 1200) : 800}
-          height={600}
-        />
-
-        {/* 지역 상세 정보 패널 */}
-        <AnimatePresence>
-          {selectedRegion && (
-            <motion.div
-              initial={{ opacity: 0, x: 20 }}
-              animate={{ opacity: 1, x: 0 }}
-              exit={{ opacity: 0, x: 20 }}
-              className="absolute top-4 right-4 bg-black/80 backdrop-blur-md rounded-xl p-5 border border-gray-700 w-64"
+      {isFullscreen ? (
+        createPortal(
+          <div 
+            className="fixed inset-0 z-[9999] bg-gray-900"
+            style={{ width: '100vw', height: '100vh' }}
+          >
+            {/* 확대/축소 버튼 */}
+            <button
+              onClick={() => setIsFullscreen(false)}
+              className="absolute top-4 left-4 z-10 p-2 bg-black/60 hover:bg-black/80 rounded-lg border border-gray-600 transition-all"
+              title="Exit fullscreen"
             >
-              <div className="flex justify-between items-start mb-3">
-                <div>
-                  <h4 className="text-lg font-bold text-white">
-                    {lang === 'ko' ? selectedRegion.nameKo : selectedRegion.name}
-                  </h4>
-                  <p className="text-xs text-gray-400">
-                    {lang === 'ko' ? selectedRegion.name : ''}
-                  </p>
-                </div>
-                <button
-                  onClick={() => setSelectedRegion(null)}
-                  className="p-1 hover:bg-gray-700 rounded transition-colors"
+              <Minimize2 className="w-5 h-5 text-white" />
+            </button>
+            <Globe
+              ref={globeEl}
+              globeImageUrl="//unpkg.com/three-globe/example/img/earth-blue-marble.jpg"
+              bumpImageUrl="//unpkg.com/three-globe/example/img/earth-topology.png"
+              backgroundImageUrl="//unpkg.com/three-globe/example/img/night-sky.png"
+
+              pointsData={pointsData}
+              pointLat="lat"
+              pointLng="lng"
+              pointColor="color"
+              pointAltitude="altitude"
+              pointRadius="size"
+              pointLabel={getPointLabel}
+              onPointClick={handlePointClick}
+
+              arcsData={arcsData}
+              arcStartLat="startLat"
+              arcStartLng="startLng"
+              arcEndLat="endLat"
+              arcEndLng="endLng"
+              arcColor="color"
+              arcAltitude="arcAlt"
+              arcStroke={0.5}
+              arcDashLength="arcDashLength"
+              arcDashGap="arcDashGap"
+              arcDashAnimateTime="arcDashAnimateTime"
+
+              htmlElementsData={htmlElementsData}
+              htmlLat="lat"
+              htmlLng="lng"
+              htmlAltitude="altitude"
+              htmlElement={(d: any) => {
+                const el = document.createElement('div');
+                el.innerHTML = `<span style="
+                  color: white;
+                  font-size: 11px;
+                  font-weight: 600;
+                  text-shadow: 0 1px 3px rgba(0,0,0,0.8), 0 0 8px rgba(0,0,0,0.5);
+                  white-space: nowrap;
+                  pointer-events: none;
+                ">${d.name}</span>`;
+                return el;
+              }}
+
+              atmosphereColor="#0d9488"
+              atmosphereAltitude={0.25}
+
+              width={window.innerWidth}
+              height={window.innerHeight}
+            />
+
+            {/* 지역 상세 정보 패널 */}
+            <AnimatePresence>
+              {selectedRegion && (
+                <motion.div
+                  initial={{ opacity: 0, x: 20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  exit={{ opacity: 0, x: 20 }}
+                  className="absolute top-4 right-4 bg-black/80 backdrop-blur-md rounded-xl p-5 border border-gray-700 w-64"
                 >
-                  <svg className="w-4 h-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-                  </svg>
-                </button>
-              </div>
+                  <div className="flex justify-between items-start mb-3">
+                    <div>
+                      <h4 className="text-lg font-bold text-white">
+                        {lang === 'ko' ? selectedRegion.nameKo : selectedRegion.name}
+                      </h4>
+                      <p className="text-xs text-gray-400">
+                        {lang === 'ko' ? selectedRegion.name : ''}
+                      </p>
+                    </div>
+                    <button
+                      onClick={() => setSelectedRegion(null)}
+                      className="p-1 hover:bg-gray-700 rounded transition-colors"
+                    >
+                      <svg className="w-4 h-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                      </svg>
+                    </button>
+                  </div>
 
-              <div className="space-y-3">
-                <div>
-                  <p className="text-xs text-gray-500 uppercase tracking-wider mb-1">{t.validators}</p>
-                  <p className="text-3xl font-bold" style={{ color: selectedRegion.color }}>
-                    {selectedRegion.count}
-                  </p>
+                  <div className="space-y-3">
+                    <div>
+                      <p className="text-xs text-gray-500 uppercase tracking-wider mb-1">{t.validators}</p>
+                      <p className="text-3xl font-bold" style={{ color: selectedRegion.color }}>
+                        {selectedRegion.count}
+                      </p>
+                    </div>
+
+                    <div>
+                      <p className="text-xs text-gray-500 uppercase tracking-wider mb-1">Network Share</p>
+                      <div className="flex items-center gap-2">
+                        <div className="flex-1 h-2 bg-gray-700 rounded-full overflow-hidden">
+                          <motion.div
+                            initial={{ width: 0 }}
+                            animate={{ width: `${selectedRegion.percentage}%` }}
+                            transition={{ duration: 0.5 }}
+                            className="h-full rounded-full"
+                            style={{ backgroundColor: selectedRegion.color }}
+                          />
+                        </div>
+                        <span className="text-sm font-medium text-white">
+                          {selectedRegion.percentage}%
+                        </span>
+                      </div>
+                    </div>
+
+                    <div className="pt-2 border-t border-gray-700">
+                      <p className="text-xs text-gray-500">
+                        Lat: {selectedRegion.lat.toFixed(4)}, Lng: {selectedRegion.lng.toFixed(4)}
+                      </p>
+                    </div>
+                  </div>
+                </motion.div>
+              )}
+            </AnimatePresence>
+          </div>,
+          document.body
+        )
+      ) : (
+        <div 
+          className="relative bg-gray-900 rounded-xl overflow-hidden"
+          style={{ height: '600px' }}
+        >
+          {/* 확대 버튼 */}
+          <button
+            onClick={() => setIsFullscreen(true)}
+            className="absolute top-4 left-4 z-10 p-2 bg-black/60 hover:bg-black/80 rounded-lg border border-gray-600 transition-all"
+            title="Fullscreen"
+          >
+            <Maximize2 className="w-5 h-5 text-white" />
+          </button>
+          <Globe
+            ref={globeEl}
+            globeImageUrl="//unpkg.com/three-globe/example/img/earth-blue-marble.jpg"
+            bumpImageUrl="//unpkg.com/three-globe/example/img/earth-topology.png"
+            backgroundImageUrl="//unpkg.com/three-globe/example/img/night-sky.png"
+
+            pointsData={pointsData}
+            pointLat="lat"
+            pointLng="lng"
+            pointColor="color"
+            pointAltitude="altitude"
+            pointRadius="size"
+            pointLabel={getPointLabel}
+            onPointClick={handlePointClick}
+
+            arcsData={arcsData}
+            arcStartLat="startLat"
+            arcStartLng="startLng"
+            arcEndLat="endLat"
+            arcEndLng="endLng"
+            arcColor="color"
+            arcAltitude="arcAlt"
+            arcStroke={0.5}
+            arcDashLength="arcDashLength"
+            arcDashGap="arcDashGap"
+            arcDashAnimateTime="arcDashAnimateTime"
+
+            htmlElementsData={htmlElementsData}
+            htmlLat="lat"
+            htmlLng="lng"
+            htmlAltitude="altitude"
+            htmlElement={(d: any) => {
+              const el = document.createElement('div');
+              el.innerHTML = `<span style="
+                color: white;
+                font-size: 11px;
+                font-weight: 600;
+                text-shadow: 0 1px 3px rgba(0,0,0,0.8), 0 0 8px rgba(0,0,0,0.5);
+                white-space: nowrap;
+                pointer-events: none;
+              ">${d.name}</span>`;
+              return el;
+            }}
+
+            atmosphereColor="#0d9488"
+            atmosphereAltitude={0.25}
+
+            width={typeof window !== 'undefined' ? Math.min(window.innerWidth - 64, 1200) : 800}
+            height={600}
+          />
+
+          {/* 지역 상세 정보 패널 */}
+          <AnimatePresence>
+            {selectedRegion && (
+              <motion.div
+                initial={{ opacity: 0, x: 20 }}
+                animate={{ opacity: 1, x: 0 }}
+                exit={{ opacity: 0, x: 20 }}
+                className="absolute top-4 right-4 bg-black/80 backdrop-blur-md rounded-xl p-5 border border-gray-700 w-64"
+              >
+                <div className="flex justify-between items-start mb-3">
+                  <div>
+                    <h4 className="text-lg font-bold text-white">
+                      {lang === 'ko' ? selectedRegion.nameKo : selectedRegion.name}
+                    </h4>
+                    <p className="text-xs text-gray-400">
+                      {lang === 'ko' ? selectedRegion.name : ''}
+                    </p>
+                  </div>
+                  <button
+                    onClick={() => setSelectedRegion(null)}
+                    className="p-1 hover:bg-gray-700 rounded transition-colors"
+                  >
+                    <svg className="w-4 h-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                    </svg>
+                  </button>
                 </div>
 
-                <div>
-                  <p className="text-xs text-gray-500 uppercase tracking-wider mb-1">Network Share</p>
-                  <div className="flex items-center gap-2">
-                    <div className="flex-1 h-2 bg-gray-700 rounded-full overflow-hidden">
-                      <motion.div
-                        initial={{ width: 0 }}
-                        animate={{ width: `${selectedRegion.percentage}%` }}
-                        transition={{ duration: 0.5 }}
-                        className="h-full rounded-full"
-                        style={{ backgroundColor: selectedRegion.color }}
-                      />
+                <div className="space-y-3">
+                  <div>
+                    <p className="text-xs text-gray-500 uppercase tracking-wider mb-1">{t.validators}</p>
+                    <p className="text-3xl font-bold" style={{ color: selectedRegion.color }}>
+                      {selectedRegion.count}
+                    </p>
+                  </div>
+
+                  <div>
+                    <p className="text-xs text-gray-500 uppercase tracking-wider mb-1">Network Share</p>
+                    <div className="flex items-center gap-2">
+                      <div className="flex-1 h-2 bg-gray-700 rounded-full overflow-hidden">
+                        <motion.div
+                          initial={{ width: 0 }}
+                          animate={{ width: `${selectedRegion.percentage}%` }}
+                          transition={{ duration: 0.5 }}
+                          className="h-full rounded-full"
+                          style={{ backgroundColor: selectedRegion.color }}
+                        />
+                      </div>
+                      <span className="text-sm font-medium text-white">
+                        {selectedRegion.percentage}%
+                      </span>
                     </div>
-                    <span className="text-sm font-medium text-white">
-                      {selectedRegion.percentage}%
-                    </span>
+                  </div>
+
+                  <div className="pt-2 border-t border-gray-700">
+                    <p className="text-xs text-gray-500">
+                      Lat: {selectedRegion.lat.toFixed(4)}, Lng: {selectedRegion.lng.toFixed(4)}
+                    </p>
                   </div>
                 </div>
-
-                <div className="pt-2 border-t border-gray-700">
-                  <p className="text-xs text-gray-500">
-                    Lat: {selectedRegion.lat.toFixed(4)}, Lng: {selectedRegion.lng.toFixed(4)}
-                  </p>
-                </div>
-              </div>
-            </motion.div>
-          )}
-        </AnimatePresence>
-      </div>
+              </motion.div>
+            )}
+          </AnimatePresence>
+        </div>
+      )}
 
       {/* 지역별 분포 차트 */}
       <div className="mt-6 p-6 bg-gray-50 rounded-lg border border-gray-200">

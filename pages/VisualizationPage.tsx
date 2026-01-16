@@ -39,116 +39,16 @@ const VisualizationCard: React.FC<{ item: VisualizationItem; index: number }> = 
           {/* RWA 카드는 이미지 표시 */}
           {item.id === '1' ? (
             <img
-              src="/images/RWA.png"
+              src="/visualization/RWA.png"
               alt={item.title}
               className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
             />
           ) : item.id === '2' ? (
-            /* Validators Globe placeholder - 3D 지구본 스타일 */
-            <div className="absolute inset-0 flex items-center justify-center">
-              <svg viewBox="0 0 200 200" className="w-3/4 h-3/4">
-                {/* 지구본 원 */}
-                <motion.circle
-                  cx="100"
-                  cy="100"
-                  r="70"
-                  fill="none"
-                  stroke="#0d9488"
-                  strokeWidth="2"
-                  initial={{ scale: 0, opacity: 0 }}
-                  whileInView={{ scale: 1, opacity: 1 }}
-                  transition={{ duration: 0.8 }}
-                />
-                {/* 위도선 */}
-                {[-30, 0, 30].map((offset, i) => (
-                  <motion.ellipse
-                    key={`lat-${i}`}
-                    cx="100"
-                    cy={100 + offset}
-                    rx="70"
-                    ry={Math.abs(70 - Math.abs(offset) * 1.5)}
-                    fill="none"
-                    stroke="#0d9488"
-                    strokeWidth="0.5"
-                    opacity="0.5"
-                    initial={{ pathLength: 0 }}
-                    whileInView={{ pathLength: 1 }}
-                    transition={{ delay: 0.3 + i * 0.1, duration: 0.8 }}
-                  />
-                ))}
-                {/* 경도선 */}
-                <motion.ellipse
-                  cx="100"
-                  cy="100"
-                  rx="30"
-                  ry="70"
-                  fill="none"
-                  stroke="#0d9488"
-                  strokeWidth="0.5"
-                  opacity="0.5"
-                  initial={{ pathLength: 0 }}
-                  whileInView={{ pathLength: 1 }}
-                  transition={{ delay: 0.5, duration: 0.8 }}
-                />
-                <motion.line
-                  x1="30"
-                  y1="100"
-                  x2="170"
-                  y2="100"
-                  stroke="#0d9488"
-                  strokeWidth="0.5"
-                  opacity="0.5"
-                  initial={{ pathLength: 0 }}
-                  whileInView={{ pathLength: 1 }}
-                  transition={{ delay: 0.6, duration: 0.5 }}
-                />
-                {/* Validator 노드들 */}
-                {[
-                  { cx: 60, cy: 80, r: 4 },   // 북미
-                  { cx: 120, cy: 75, r: 3 },  // 유럽
-                  { cx: 145, cy: 90, r: 4 },  // 아시아
-                  { cx: 130, cy: 130, r: 2 }, // 호주
-                  { cx: 85, cy: 120, r: 2 },  // 남미
-                ].map((node, i) => (
-                  <motion.circle
-                    key={`node-${i}`}
-                    cx={node.cx}
-                    cy={node.cy}
-                    r={node.r}
-                    fill="#0d9488"
-                    initial={{ scale: 0 }}
-                    whileInView={{ scale: 1 }}
-                    transition={{ delay: 0.8 + i * 0.1 }}
-                  />
-                ))}
-                {/* Arc 연결선 */}
-                <motion.path
-                  d="M60,80 Q100,50 145,90"
-                  fill="none"
-                  stroke="#f59e0b"
-                  strokeWidth="1"
-                  strokeDasharray="3,2"
-                  initial={{ pathLength: 0, opacity: 0 }}
-                  whileInView={{ pathLength: 1, opacity: 0.7 }}
-                  transition={{ delay: 1.2, duration: 1 }}
-                />
-                <motion.path
-                  d="M120,75 Q140,100 145,90"
-                  fill="none"
-                  stroke="#6366f1"
-                  strokeWidth="1"
-                  strokeDasharray="3,2"
-                  initial={{ pathLength: 0, opacity: 0 }}
-                  whileInView={{ pathLength: 1, opacity: 0.7 }}
-                  transition={{ delay: 1.4, duration: 0.8 }}
-                />
-              </svg>
-              {/* 숫자 오버레이 */}
-              <div className="absolute bottom-4 right-4 text-right">
-                <div className="font-mono text-xs text-gray-400">VALIDATORS</div>
-                <div className="font-serif text-2xl text-teal-400">128</div>
-              </div>
-            </div>
+            <img
+              src="/visualization/Validator.png"
+              alt={item.title}
+              className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+            />
           ) : (
             <>
               <div className="absolute inset-0 opacity-30">
