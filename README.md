@@ -48,7 +48,7 @@ npm run dev
 
 ## 📬 Contact
 
-- **X (Twitter)**: [@TriaThome](https://x.com/TriaThome)
+- **X (Twitter)**: [@TriaThome](https://x.com/Rayxxxxn)
 - **Telegram**: [@TriaThome](https://t.me/TriaThome)
 
 ---
