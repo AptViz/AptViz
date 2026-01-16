@@ -2,7 +2,6 @@ import React from 'react';
 import { Header } from '../components/Header';
 import { Hero } from '../components/Hero';
 import { Visualization } from '../components/Visualization';
-import { NewsSection } from '../components/NewsSection';
 import { Footer } from '../components/Footer';
 
 export const HomePage: React.FC = () => {
@@ -12,7 +11,6 @@ export const HomePage: React.FC = () => {
       <main>
         <Hero />
         <Visualization />
-        <NewsSection />
       </main>
       <Footer />
     </>

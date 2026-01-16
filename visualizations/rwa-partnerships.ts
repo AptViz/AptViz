@@ -13,7 +13,7 @@ export const rwaPartnerCategories: PartnerCategory[] = [
         nameKo: '블랙록',
         description: '세계 최대 운용사. BUIDL 펀드를 앱토스 네트워크에 확장하여 기관용 유동성 공급.',
         tokens: ['BUIDL'],
-        tvl: 295888048,
+        tvl: 558100000,
         note: 'Securitize를 통해 발행된 펀드 TVL',
         url: 'https://www.blackrock.com'
       },
@@ -40,8 +40,8 @@ export const rwaPartnerCategories: PartnerCategory[] = [
         nameKo: '시큐리타이즈',
         description: '블랙록 BUIDL의 발행 파트너. 앱토스 내 가장 큰 규모의 RWA 자산 관리.',
         tokens: ['BUIDL', 'ACRED'],
-        tvl: 317440143,
-        note: 'BUIDL ($295M) + ACRED ($21.5M) 합산. BlackRock과 Apollo 관련 자산 관리',
+        tvl: 579600000,
+        note: 'BUIDL ($558M) + ACRED ($21.5M) 합산. BlackRock과 Apollo 관련 자산 관리',
         url: 'https://securitize.io'
       },
       {
@@ -130,8 +130,8 @@ export const rwaPartnerCategories: PartnerCategory[] = [
         nameKo: 'USDT',
         description: '앱토스 내 최대 규모의 스테이블코인 공급.',
         tokens: ['USDT'],
-        tvl: 811766199,
-        note: '네이티브 $794M + LayerZero/Portal 브릿지 합산',
+        tvl: 936000000,
+        note: '네이티브 $936M ~ (Market Share Estimation)',
         url: 'https://tether.to'
       },
       {
@@ -139,8 +139,8 @@ export const rwaPartnerCategories: PartnerCategory[] = [
         nameKo: 'USDC',
         description: '규제 준수형 스테이블코인 공급 및 네이티브 USDC 발행 협업.',
         tokens: ['USDC'],
-        tvl: 102843268,
-        note: '네이티브 $77M + LayerZero/Portal 브릿지 합산',
+        tvl: 264800000,
+        note: '네이티브 + 브릿지 합산 ($264.8M)',
         url: 'https://www.circle.com'
       },
       {
@@ -198,7 +198,7 @@ export const rwaPartnerCategories: PartnerCategory[] = [
         url: 'https://petra.app'
       }
     ]
-  }
+  },
 ];
 
 // 총 TVL 계산
