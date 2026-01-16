@@ -39,7 +39,7 @@ const slides: SlideItem[] = [
     tags: continentStats.slice(0, 4).map(s => `${s.nameKo} (${s.count})`),
     buttonText: 'Explore Globe',
     link: '/visualization/2',
-    customPreview: 'validators-globe',
+    image: '/visualization/Validator.png',
     cardTitle: 'Validators Global Map',
     cardDescription: '3D 지구본으로 전세계 Validator 분포를 탐험하세요.',
     stats: [
@@ -58,7 +58,7 @@ const slides: SlideItem[] = [
     tags: ['BlackRock', 'PACT', 'Securitize', 'Tether', 'Circle'],
     buttonText: 'Explore Map',
     link: '/visualization/1',
-    image: '/images/RWA.png',
+    image: '/visualization/RWA.png',
     cardTitle: 'RWA Partnership Ecosystem',
     cardDescription: 'Aptos의 Real World Asset 토큰화 생태계를 탐험하세요.',
     stats: [

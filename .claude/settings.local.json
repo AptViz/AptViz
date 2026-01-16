@@ -8,7 +8,9 @@
       "Bash(move \"images\\\\article-shelby-data-infra.png\" \"deepdive\"\" && echo \"Files moved \")",
       "Bash(ls:*)",
       "Bash(git checkout:*)",
-      "Bash(git commit -m \"$\\(cat <<''EOF''\nMerge remote changes with Validators Globe visualization\n\n- Integrate Validators Globe as first slide in Hero carousel\n- Keep RWA Partnership as second slide\n- Resolve image path conflicts\n- Update Active Validators to 128 with click-through link\n\nCo-Authored-By: Claude Opus 4.5 <noreply@anthropic.com>\nEOF\n\\)\")"
+      "Bash(git commit -m \"$\\(cat <<''EOF''\nMerge remote changes with Validators Globe visualization\n\n- Integrate Validators Globe as first slide in Hero carousel\n- Keep RWA Partnership as second slide\n- Resolve image path conflicts\n- Update Active Validators to 128 with click-through link\n\nCo-Authored-By: Claude Opus 4.5 <noreply@anthropic.com>\nEOF\n\\)\")",
+      "Bash(dir /s /b *.png)",
+      "Bash(findstr:*)"
     ]
   }
 }
