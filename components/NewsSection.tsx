@@ -62,7 +62,7 @@ const ArticleRow: React.FC<{ item: NewsItem; index: number; onClick: () => void 
       </div>
     </div>
     
-    <div className="md:w-1/4 aspect-square md:aspect-[4/5] bg-gray-50 relative overflow-hidden hidden md:block transition-transform duration-700 group-hover:scale-[1.02]">
+    <div className="md:w-1/4 aspect-[40/21] bg-gray-50 relative overflow-hidden hidden md:block transition-transform duration-700 group-hover:scale-[1.02]">
       <AbstractThumbnail index={index} imageUrl={item.imageUrl} />
     </div>
   </motion.div>
