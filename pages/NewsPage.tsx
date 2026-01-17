@@ -32,7 +32,7 @@ const newsItems: NewsItem[] = [
       en: 'Chicago-based crypto exchange Bitnomial introduces the first CFTC-regulated APT futures contracts, paving the way for institutional adoption and potential ETF approval.'
     },
     date: { ko: '2026년 1월 14일', en: 'Jan 14, 2026' },
-    thumbnail: '/news/news-1-bitnomial-apt-futures.png',
+    thumbnail: '/news/news1.png',
     sourceUrl: 'https://www.theblock.co/post/385480/bitnomial-launches-first-regulated-aptos-futures-u-s',
     content: {
       ko: `시카고 기반 암호화폐 거래소 Bitnomial이 레이어-1 블록체인 Aptos의 네이티브 토큰과 연동된 월간 선물 계약을 출시했습니다. 이는 미국 규제 하에서 최초로 출시되는 APT 파생상품입니다.

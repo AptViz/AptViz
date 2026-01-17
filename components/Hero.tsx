@@ -96,7 +96,7 @@ const slides: SlideItem[] = [
     tags: ['CFTC', 'Futures', 'ETF', 'Institutional'],
     buttonText: 'Read More',
     link: '/news/1',
-    image: '/news/news-1-bitnomial-apt-futures.png',
+    image: '/news/news1.png',
     cardTitle: 'First U.S.-Regulated APT Futures',
     cardDescription: 'CFTC 규제 APT 선물로 ETF 승인 기반 마련',
     stats: [
@@ -303,7 +303,7 @@ export const Hero: React.FC = () => {
 
               {/* Right Column - Card Preview */}
               <div
-                className={`rounded-2xl border overflow-hidden group cursor-pointer hover:shadow-xl transition-shadow duration-300 h-[480px] flex flex-col ${
+                className={`rounded-2xl border overflow-hidden group cursor-pointer hover:shadow-xl transition-shadow duration-300 h-[540px] flex flex-col ${
                   isValidatorsGlobe ? 'bg-gray-900 border-gray-700' : 'bg-white border-gray-200'
                 }`}
                 onClick={() => {

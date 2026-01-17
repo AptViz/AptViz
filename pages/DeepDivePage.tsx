@@ -144,7 +144,136 @@ Aptos's approximately 490x processing capacity headroom means technical limitati
 
 The key questions are: Can Decibel absorb liquidity from existing major exchanges? Can Shelby cross the enterprise market threshold as an alternative to centralized cloud storage? And can stablecoins become a global payment standard beyond mere speculation tools?
 
-Ultimately, proving that Aptos's strategy of kneeling for infrastructure to gain momentum was correct will come from **actual adoption metrics**, not technical indicators. 2026 appears to be a critical inflection point determining whether Aptos's vision of a "Financial Internet" can establish itself as core infrastructure for the real economic system, beyond technical hypothesis.`
+Ultimately, proving that Aptos's strategy of kneeling for infrastructure to gain momentum was correct will come from **actual adoption metrics**, not indicators. 2026 appears to be a critical inflection point determining whether Aptos's vision of a "Financial Internet" can establish itself as core infrastructure for the real economic system, beyond technical hypothesis.`
+  },
+  {
+    id: '2',
+    category: 'Market',
+    title: "APT Futures on Bitnomial: A Gateway to Institutional Adoption",
+    titleKo: "Bitnomial APT 선물 상장: 기관 자본을 향한 관문이 열리다",
+    description: 'Analysis of the first CFTC-regulated APT futures listing and its implications for Aptos ecosystem maturity.',
+    descriptionKo: '미국 CFTC 규제를 받는 최초의 APT 선물 상품 출시와 이것이 앱토스 생태계 성숙도에 미치는 함의를 분석합니다.',
+    readTime: '7 min read',
+    thumbnail: '/deepdive/deepdive2.png',
+    heroImage: '/deepdive/deepdive2.png',
+    contentKo: `# APT 선물, 월스트리트의 문을 두드리다
+
+2026년 1월 14일, 시카고에 본사를 둔 파생상품 거래소 Bitnomial이 역사적인 발표를 했습니다. 바로 미국 상품선물거래위원회(CFTC)의 규제 아래 **최초의 Aptos(APT) 월별 선물 계약**을 출시한 것입니다. 이 상장은 단순한 새로운 거래 상품의 등장을 넘어, 앱토스가 기관 금융의 영역으로 본격 진입했음을 선언하는 이정표입니다.
+
+## 왜 규제된 선물 시장이 중요한가
+
+암호화폐 시장에서 규제된 파생상품의 존재는 단순히 거래 수단의 다양화를 의미하지 않습니다. 그것은 해당 자산이 **기관 투자자들의 레이더에 들어왔다**는 선언과 같습니다.
+
+비트코인과 이더리움의 사례를 보면, 규제된 선물 시장의 탄생은 현물 ETF 승인의 전제 조건이었습니다. CME에서 비트코인 선물이 거래되기 시작한 후에야 SEC는 현물 ETF를 승인했고, 이더리움 역시 같은 경로를 밟았습니다. Bitnomial의 사장 Michael Dunn은 이를 명확히 지적합니다: **"규제된 선물 시장은 현물 크립토 ETF 승인을 위한 필수 관문입니다."**
+
+## Bitnomial이 제공하는 것
+
+Bitnomial은 이미 비트코인과 이더리움 파생상품을 취급해온 CFTC 규제 거래소입니다. 이번 APT 선물 상품은 다음과 같은 특징을 갖습니다:
+
+### 유연한 결제 방식
+포지션 방향에 따라 **USD 또는 APT**로 결제를 선택할 수 있습니다. 이는 기관 투자자들이 기존 달러 기반 인프라를 활용하면서도 필요에 따라 실물 토큰을 확보할 수 있는 유연성을 제공합니다.
+
+### 포트폴리오 마진링
+기관 투자자들은 기존 거래 인프라 위에서 **포트폴리오 마진링**을 통해 APT 익스포저를 효율적으로 관리할 수 있습니다. 같은 계좌에서 비트코인, 이더리움과 함께 APT 포지션을 통합 관리할 수 있다는 의미입니다.
+
+### 소매 투자자 접근성
+기관 투자자뿐 아니라 소매 투자자들도 Bitnomial의 **Botanical 플랫폼**을 통해 조만간 접근이 가능해질 예정입니다. 이는 규제된 환경에서 APT 파생상품 거래를 원하는 모든 미국 투자자들에게 문을 열어줍니다.
+
+## 시장에 미치는 파급 효과
+
+### 유동성과 가격 안정성
+규제된 선물 시장은 기관 자본의 유입을 촉진합니다. 이는 단순히 거래량 증가를 넘어 **가격 발견 메커니즘의 성숙**을 의미합니다. 기관 투자자들의 참여는 일반적으로 시장의 변동성을 완화하고, 보다 효율적인 가격 형성에 기여합니다.
+
+### ETF 승인을 향한 디딤돌
+역사가 증명하듯, 규제된 선물 시장의 존재는 미국 SEC가 현물 ETF를 승인할 때 가장 중요하게 고려하는 요소 중 하나입니다. APT 선물 상장은 미래의 **APT 현물 ETF 승인 가능성**을 한층 높여주는 결정적인 선례가 됩니다.
+
+### 앱토스 생태계의 성숙 신호
+이번 상장이 발표된 시점은 우연이 아닙니다. 앱토스는 최근 **일일 수수료 수익 100만 달러를 돌파**하며, RWA(실물자산 토큰화) 분야에서 폭발적인 성장세를 보여주고 있습니다. 네트워크의 안정성과 보안이 기관 수준에 도달했다는 명확한 증거입니다.
+
+## 해외 시장과의 차별점
+
+Binance를 비롯한 해외 거래소에서는 이미 APT 무기한(Perpetual) 선물이 거래되고 있습니다. 그러나 이들 상품은 미국 규제 체계 밖에서 운영됩니다. Bitnomial의 상품이 갖는 차별점은 명확합니다:
+
+- **CFTC 직접 규제**: 미국 상품선물거래위원회의 직접적인 감독
+- **법적 명확성**: 미국 기관 투자자들이 컴플라이언스 우려 없이 참여 가능
+- **시장 감시**: 조작 방지를 위한 체계적인 시장 감시 체계
+
+Aptos Labs의 최고 비즈니스 책임자 Solomon Tesfaye는 이를 다음과 같이 평가했습니다: **"이 상장은 블록체인 기술의 기관 채택을 위한 필수 인프라를 제공합니다."**
+
+## 잠재적 리스크와 전망
+
+### 리스크 요인
+모든 파생상품이 그렇듯, 레버리지 거래는 청산 위험을 동반합니다. 또한 규제 환경의 변화(예: CFTC의 추가 제한)가 시장에 영향을 미칠 수 있습니다. 그러나 CFTC의 감독 체계 자체가 시장 조작 가능성을 크게 완화합니다.
+
+### 확장 로드맵
+Bitnomial은 월별 선물에서 멈추지 않을 계획입니다. 향후 **무기한 선물(Perpetual Futures)** 과 **옵션** 상품 출시가 예정되어 있습니다. 이는 앱토스의 파생상품 생태계가 비트코인, 이더리움과 동등한 수준으로 성숙해 나갈 것임을 시사합니다.
+
+## 결론: 기관화의 새로운 장
+
+Bitnomial의 APT 선물 상장은 단순한 새 상품 출시가 아닙니다. 이는 **앱토스가 기관 투자자들의 투자 유니버스에 공식적으로 편입되었음**을 알리는 선언입니다.
+
+암호화폐 시장의 기관화는 거스를 수 없는 흐름입니다. 2024년 비트코인 현물 ETF 승인, 2025년 이더리움 현물 ETF 승인에 이어, 2026년은 알트코인들이 그 뒤를 따르는 해가 될 것으로 보입니다. 앱토스는 규제된 선물 시장을 확보한 극소수의 레이어1 블록체인 중 하나로서, 이 대열의 선두에 서게 되었습니다.
+
+투자자들에게 이번 상장은 분명 긍정적인 시그널입니다. 그러나 파생상품 시장의 본질적인 변동성과 레버리지 위험을 감안한 신중한 접근이 필요합니다. 앱토스의 기술적 성숙도와 기관 인프라가 함께 갖춰진 지금, 시장은 다음 단계 **현물 ETF 승인** 를 향한 기대감으로 들끓고 있습니다.`,
+    content: `# APT Futures: Knocking on Wall Street's Door
+
+On January 14, 2026, Chicago-based derivatives exchange Bitnomial made a historic announcement: the launch of **the first Aptos (APT) monthly futures contract** under the regulation of the U.S. Commodity Futures Trading Commission (CFTC). This listing goes beyond the mere introduction of a new trading product—it marks a milestone declaring Aptos's official entry into the realm of institutional finance.
+
+## Why Regulated Futures Markets Matter
+
+In the crypto market, the existence of regulated derivatives signifies more than just diversification of trading instruments. It's a declaration that the asset has **entered the radar of institutional investors**.
+
+Looking at Bitcoin and Ethereum, the birth of regulated futures markets was a prerequisite for spot ETF approval. Only after Bitcoin futures began trading on CME did the SEC approve a spot ETF, and Ethereum followed the same path. Bitnomial President Michael Dunn points this out clearly: **"Regulated futures markets are an essential gateway for spot crypto ETF approval."**
+
+## What Bitnomial Offers
+
+Bitnomial is a CFTC-regulated exchange that already handles Bitcoin and Ethereum derivatives. The new APT futures product features:
+
+### Flexible Settlement
+Traders can choose to settle in **USD or APT** depending on position direction. This provides institutional investors the flexibility to utilize existing dollar-based infrastructure while acquiring actual tokens when needed.
+
+### Portfolio Margining
+Institutional investors can efficiently manage APT exposure through **portfolio margining** on top of existing trading infrastructure. This means APT positions can be managed alongside Bitcoin and Ethereum in the same account.
+
+### Retail Investor Access
+Not just institutions—retail investors will soon be able to access these products through Bitnomial's **Botanical platform**. This opens doors for all U.S. investors seeking APT derivative trading in a regulated environment.
+
+## Market Ripple Effects
+
+### Liquidity and Price Stability
+Regulated futures markets facilitate institutional capital inflows. This goes beyond mere volume increases—it signifies **maturation of price discovery mechanisms**. Institutional participation generally mitigates market volatility and contributes to more efficient price formation.
+
+### Stepping Stone Toward ETF Approval
+As history proves, the existence of a regulated futures market is one of the most important factors the SEC considers when approving spot ETFs. The APT futures listing becomes a decisive precedent that significantly raises the possibility of a **future APT spot ETF approval**.
+
+### Signal of Aptos Ecosystem Maturity
+The timing of this listing announcement is no coincidence. Aptos recently **surpassed $1 million in daily fee revenue**, demonstrating explosive growth in the RWA (Real World Asset tokenization) sector. This is clear evidence that the network's stability and security have reached institutional grade.
+
+## Differentiation from Overseas Markets
+
+APT perpetual futures already trade on overseas exchanges like Binance. However, these products operate outside the U.S. regulatory framework. Bitnomial's product has clear differentiators:
+
+- **Direct CFTC Regulation**: Direct oversight by the U.S. Commodity Futures Trading Commission
+- **Legal Clarity**: U.S. institutional investors can participate without compliance concerns
+- **Market Surveillance**: Systematic market surveillance mechanisms to prevent manipulation
+
+Aptos Labs Chief Business Officer Solomon Tesfaye evaluated this as follows: **"This listing provides essential infrastructure for institutional adoption of blockchain technology."**
+
+## Potential Risks and Outlook
+
+### Risk Factors
+As with all derivatives, leveraged trading carries liquidation risks. Additionally, changes in the regulatory environment (e.g., additional CFTC restrictions) could impact the market. However, the CFTC oversight system itself significantly mitigates the possibility of market manipulation.
+
+### Expansion Roadmap
+Bitnomial doesn't plan to stop at monthly futures. **Perpetual futures** and **options** products are planned for future release. This suggests Aptos's derivatives ecosystem will mature to levels equivalent to Bitcoin and Ethereum.
+
+## Conclusion: A New Chapter in Institutionalization
+
+Bitnomial's APT futures listing is not merely a new product launch. It's a declaration that **Aptos has been officially incorporated into institutional investors' investment universe**.
+
+The institutionalization of the crypto market is an irreversible trend. Following the 2024 Bitcoin spot ETF approval and 2025 Ethereum spot ETF approval, 2026 appears to be the year altcoins follow suit. Aptos is one of the few Layer 1 blockchains with a regulated futures market, now standing at the forefront of this movement.
+
+For investors, this listing is clearly a positive signal. However, a prudent approach is needed considering the inherent volatility of derivatives markets and leverage risks. With Aptos's technical maturity and institutional infrastructure now in place, the market is buzzing with anticipation for the next step—spot ETF approval.`
   }
 ];
 
