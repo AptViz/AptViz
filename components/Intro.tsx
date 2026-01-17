@@ -65,10 +65,10 @@ export const Intro: React.FC<IntroProps> = ({ onEnter }) => {
           transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
         >
             <h1 className="font-serif text-6xl md:text-8xl lg:text-9xl font-medium tracking-tight text-journal-black leading-none mb-6">
-              <TypingText text="The Speed" delay={200} />
+              <TypingText text="The Move" delay={200} />
               <br/>
               <span className="italic">
-                <TypingText text="of Thought" delay={800} />
+                <TypingText text="Narrative" delay={800} />
               </span>
             </h1>
         </motion.div>
@@ -79,7 +79,7 @@ export const Intro: React.FC<IntroProps> = ({ onEnter }) => {
           animate={{ opacity: 1 }}
           transition={{ duration: 1, delay: 1.5, ease: "easeInOut" }}
         >
-          Click to Explore
+          ENTER THE ARCHIVE
         </motion.p>
       </div>
     </motion.div>

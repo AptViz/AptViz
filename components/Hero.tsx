@@ -234,6 +234,7 @@ export const Hero: React.FC = () => {
           </div>
 
           {/* Main Content */}
+          <div className="min-h-[600px] md:min-h-[600px]">
           <AnimatePresence mode="wait">
             <motion.div
               key={currentSlide}
@@ -302,7 +303,7 @@ export const Hero: React.FC = () => {
 
               {/* Right Column - Card Preview */}
               <div
-                className={`rounded-2xl border overflow-hidden group cursor-pointer hover:shadow-xl transition-shadow duration-300 ${
+                className={`rounded-2xl border overflow-hidden group cursor-pointer hover:shadow-xl transition-shadow duration-300 h-[480px] flex flex-col ${
                   isValidatorsGlobe ? 'bg-gray-900 border-gray-700' : 'bg-white border-gray-200'
                 }`}
                 onClick={() => {
@@ -312,9 +313,11 @@ export const Hero: React.FC = () => {
               >
                 {/* Image/Preview Section */}
                 {isValidatorsGlobe ? (
-                  <ValidatorsGlobePreview />
+                  <div className="h-64 flex-shrink-0">
+                    <ValidatorsGlobePreview />
+                  </div>
                 ) : (
-                  <div className="relative w-full h-64 bg-gradient-to-br from-teal-50 to-indigo-50 overflow-hidden">
+                  <div className="relative w-full h-64 flex-shrink-0 bg-gradient-to-br from-teal-50 to-indigo-50 overflow-hidden">
                     <img
                       src={slide.image}
                       alt={slide.cardTitle}
@@ -324,7 +327,7 @@ export const Hero: React.FC = () => {
                 )}
 
                 {/* Info Section */}
-                <div className={`p-8 md:p-10 space-y-6 ${isValidatorsGlobe ? 'bg-gray-800' : ''}`}>
+                <div className={`p-8 md:p-10 space-y-6 flex-1 flex flex-col justify-between ${isValidatorsGlobe ? 'bg-gray-800' : ''}`}>
                   <div>
                     <h4 className={`font-serif text-xl mb-2 ${isValidatorsGlobe ? 'text-white' : 'text-journal-black'}`}>
                       {isValidatorsGlobe ? (
@@ -356,6 +359,7 @@ export const Hero: React.FC = () => {
               </div>
             </motion.div>
           </AnimatePresence>
+          </div>
 
         </div>
       </div>
