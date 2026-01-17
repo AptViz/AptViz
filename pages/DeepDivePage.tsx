@@ -22,6 +22,7 @@ interface DeepDiveItem {
   description: string;
   descriptionKo?: string;
   readTime: string;
+  date: string;  // Format: YYYY.MM.DD
   content: string;
   contentKo?: string;
   thumbnail?: string;
@@ -37,6 +38,7 @@ const deepDiveItems: DeepDiveItem[] = [
     description: 'How Aptos strategically focused on building robust infrastructure in 2025 to prepare for explosive growth in 2026.',
     descriptionKo: '2025년에 탄탄한 인프라 구축에 전략적으로 집중하며 2026년의 폭발적인 성장을 준비한 앱토스의 이야기.',
     readTime: '9 min read',
+    date: '2026.01.04',
     thumbnail: '/deepdive/article-thumbnail.png',
     heroImage: '/deepdive/article-hero-image.png',
     contentKo: `# 앱토스가 그리는 2026년의 청사진
@@ -154,6 +156,7 @@ Ultimately, proving that Aptos's strategy of kneeling for infrastructure to gain
     description: 'Analysis of the first CFTC-regulated APT futures listing and its implications for Aptos ecosystem maturity.',
     descriptionKo: '미국 CFTC 규제를 받는 최초의 APT 선물 상품 출시와 이것이 앱토스 생태계 성숙도에 미치는 함의를 분석합니다.',
     readTime: '7 min read',
+    date: '2026.01.17',
     thumbnail: '/deepdive/deepdive2.png',
     heroImage: '/deepdive/deepdive2.png',
     contentKo: `# APT 선물, 월스트리트의 문을 두드리다
@@ -587,7 +590,7 @@ const DeepDiveDetail: React.FC = () => {
                     <span className="text-sm text-journal-gray">Aptos Movers</span>
                   </div>
                   <div className="ml-auto text-sm text-gray-400">
-                    2026.01.04
+                    {item.date}
                   </div>
                 </div>
 
@@ -820,7 +823,9 @@ export const DeepDivePage: React.FC = () => {
           </ScrollReveal>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {deepDiveItems.map((item, index) => (
+            {[...deepDiveItems]
+              .sort((a, b) => b.date.localeCompare(a.date))
+              .map((item, index) => (
               <DeepDiveCard key={item.id} item={item} index={index} />
             ))}
             {/* Coming Soon Placeholder Cards */}
