@@ -343,7 +343,7 @@ const DeepDiveCard: React.FC<{ item: DeepDiveItem; index: number }> = ({ item, i
       whileTap={{ scale: 0.98 }}
     >
       <div className="bg-white border border-gray-100 rounded-sm overflow-hidden hover:shadow-xl active:shadow-lg transition-all duration-500 hover:-translate-y-1">
-        <div className={`aspect-[16/9] bg-gradient-to-br ${gradients[index % gradients.length]} relative overflow-hidden`}>
+        <div className={`aspect-[40/21] bg-gradient-to-br ${gradients[index % gradients.length]} relative overflow-hidden`}>
           {item.thumbnail ? (
             <img 
               src={item.thumbnail} 

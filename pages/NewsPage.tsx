@@ -606,7 +606,7 @@ const NewsCard: React.FC<{ item: NewsItem; index: number; language: Language }> 
       whileTap={{ scale: 0.98 }}
     >
       <div className="bg-white border border-gray-100 rounded-sm overflow-hidden hover:shadow-xl active:shadow-lg transition-all duration-500 hover:-translate-y-1">
-        <div className={`aspect-[16/9] ${bgPatterns[index % bgPatterns.length]} relative overflow-hidden`}>
+        <div className={`aspect-[40/21] ${bgPatterns[index % bgPatterns.length]} relative overflow-hidden`}>
           {item.thumbnail ? (
             <img
               src={item.thumbnail}
@@ -709,7 +709,7 @@ const NewsDetail: React.FC = () => {
               {item.description[language]}
             </p>
 
-            <div className={`aspect-video ${bgPatterns[bgIndex % bgPatterns.length]} rounded-sm mb-12 relative overflow-hidden`}>
+            <div className={`aspect-[40/21] ${bgPatterns[bgIndex % bgPatterns.length]} rounded-sm mb-12 relative overflow-hidden`}>
               {item.thumbnail ? (
                 <img
                   src={item.thumbnail}
