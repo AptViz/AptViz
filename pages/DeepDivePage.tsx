@@ -422,7 +422,7 @@ const DeepDiveDetail: React.FC = () => {
 
   // Extract headings from content for TOC
   const tocItems = useMemo((): TocItem[] => {
-    const headingRegex = /^(#{1,3})\s+(.+)$/gm;
+    const headingRegex = /^(#{1,2})\s+(.+)$/gm;
     const items: TocItem[] = [];
     let match;
     
