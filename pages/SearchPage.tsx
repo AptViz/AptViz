@@ -35,52 +35,52 @@ const allItems: SearchItem[] = [
   },
   // News Items
   {
-    id: '1',
-    type: 'news',
-    category: 'Announcement',
-    title: 'Aptos Foundation Announces $50M Ecosystem Fund',
-    description: 'New initiative to accelerate developer adoption and protocol development across the Aptos ecosystem.',
-    readTime: '4 min read'
-  },
-  {
-    id: '2',
-    type: 'news',
-    category: 'Update',
-    title: 'Network Upgrade v1.9: Performance Improvements',
-    description: 'Latest network upgrade brings 40% improvement in transaction throughput and reduced gas costs.',
-    readTime: '6 min read'
-  },
-  {
-    id: '3',
+    id: 'apt-futures-2026',
     type: 'news',
     category: 'Partnership',
-    title: 'Major Exchange Lists APT Perpetual Futures',
-    description: 'Leading cryptocurrency exchange adds APT perpetual futures with up to 20x leverage.',
+    title: 'Bitnomial, 미국 최초 CFTC 규제 Aptos(APT) 선물 출시',
+    description: '시카고 기반 암호화폐 거래소 Bitnomial이 미국 최초로 CFTC 규제를 받는 APT 선물 계약을 출시하며, 기관 투자자 유입과 ETF 승인 가능성의 발판을 마련했습니다.',
     readTime: '5 min read'
   },
   {
-    id: '4',
+    id: 'daily-revenue-1m-2026',
     type: 'news',
     category: 'Ecosystem',
-    title: 'New DEX Launches with Innovative AMM Design',
-    description: 'Concentrated liquidity and dynamic fees bring capital efficiency to Aptos DeFi.',
-    readTime: '7 min read'
-  },
-  {
-    id: '5',
-    type: 'news',
-    category: 'Community',
-    title: 'Aptos Developer Conference 2026 Announced',
-    description: 'Annual developer conference returns with focus on Move ecosystem growth and tooling.',
-    readTime: '3 min read'
-  },
-  {
-    id: '6',
-    type: 'news',
-    category: 'Security',
-    title: 'Bug Bounty Program Expanded to $1M',
-    description: 'Critical vulnerability rewards increased to attract top security researchers.',
+    title: 'Aptos 생태계 앱들, 일일 매출 100만 달러 돌파',
+    description: 'Aptos 블록체인 위에 구축된 탈중앙화 애플리케이션들이 일일 총 매출 100만 달러를 돌파하며 생태계의 폭발적 성장을 입증했습니다.',
     readTime: '4 min read'
+  },
+  {
+    id: 'block-time-50ms-2025',
+    type: 'news',
+    category: 'Update',
+    title: 'Aptos, Baby Raptr로 50ms 미만 블록 타임 달성',
+    description: 'Aptos가 Baby Raptr 및 Velociraptr 업그레이드를 통해 블록 타임 50ms 미만이라는 경이로운 벤치마크를 달성하며 가장 빠른 L1 블록체인으로 자리매김했습니다.',
+    readTime: '5 min read'
+  },
+  {
+    id: 'rwa-1-2b-2025',
+    type: 'news',
+    category: 'Ecosystem',
+    title: 'Aptos 온체인 RWA 자산 12억 달러 돌파, 업계 Top 3',
+    description: 'Aptos 블록체인의 실물자산(RWA) 토큰화 규모가 12억 달러를 돌파하며 업계 Top 3에 진입했습니다. BlackRock BUIDL 펀드 확장이 주요 원동력입니다.',
+    readTime: '5 min read'
+  },
+  {
+    id: 'velociraptr-2025',
+    type: 'news',
+    category: 'Update',
+    title: 'Aptos Velociraptr 업그레이드, 블록 타임 0.5초 미만 달성',
+    description: 'Aptos가 Velociraptr 컨센서스 업그레이드를 통해 블록 타임 0.5초 미만을 달성하며 Layer 1 블록체인 성능의 새로운 기준을 제시했습니다.',
+    readTime: '5 min read'
+  },
+  {
+    id: 'native-usdc-2025',
+    type: 'news',
+    category: 'Partnership',
+    title: 'Aptos Native USDC 출시, 일일 활성 주소 100만 돌파',
+    description: 'Circle의 Native USDC가 Aptos에 공식 출시되며 일일 활성 주소(DAA)가 100만 개를 돌파했습니다. DeFi 생태계의 폭발적 성장이 예상됩니다.',
+    readTime: '5 min read'
   }
 ];
 
