@@ -1,6 +1,8 @@
 import { VisualizationItem } from './types';
 import { rwaPartnershipsVisualization, rwaPartnerCategories, totalRWATvl } from './rwa-partnerships';
 import { validatorsDistributionVisualization, validatorRegions, totalValidators, totalCountries } from './validators-distribution';
+import { aptosFeesTreemapVisualization, aptosAppsData, totalFees30d, sortedCategories, categoryColors } from './aptos-fees-treemap';
+import { aptosTvlData, totalAptosTvl, sortedTvlCategories, tvlCategoryColors } from './aptos-tvl-treemap';
 
 // 모든 시각화 항목들을 여기서 export
 // 새로운 시각화를 추가하려면:
@@ -11,9 +13,12 @@ import { validatorsDistributionVisualization, validatorRegions, totalValidators,
 export const visualizationItems: VisualizationItem[] = [
   rwaPartnershipsVisualization,
   validatorsDistributionVisualization,
+  aptosFeesTreemapVisualization,
 ];
 
 // 개별 데이터도 export (컴포넌트에서 직접 사용 가능)
 export { rwaPartnerCategories, totalRWATvl };
 export { validatorRegions, totalValidators, totalCountries };
+export { aptosAppsData, totalFees30d, sortedCategories, categoryColors };
+export { aptosTvlData, totalAptosTvl, sortedTvlCategories, tvlCategoryColors };
 export * from './types';

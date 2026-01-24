@@ -8,11 +8,13 @@ import { ArrowLeft } from 'lucide-react';
 import { visualizationItems, VisualizationItem } from '../visualizations';
 import { RWAPartnershipChart } from '../components/visualizations/RWAPartnershipChart';
 import { ValidatorsGlobeChart } from '../components/visualizations/ValidatorsGlobeChart';
+import { AptosFeesTreemap } from '../components/visualizations/AptosFeesTreemap';
 
 // 커스텀 컴포넌트 매핑
 const customComponents: Record<string, React.FC> = {
   RWAPartnershipChart: RWAPartnershipChart,
   ValidatorsGlobeChart: ValidatorsGlobeChart,
+  AptosFeesTreemap: AptosFeesTreemap,
 };
 
 const VisualizationCard: React.FC<{ item: VisualizationItem; index: number }> = ({ item, index }) => {
@@ -35,7 +37,7 @@ const VisualizationCard: React.FC<{ item: VisualizationItem; index: number }> = 
       whileTap={{ scale: 0.98 }}
     >
       <div className="bg-white border border-gray-100 rounded-sm overflow-hidden hover:shadow-xl active:shadow-lg transition-all duration-500 hover:-translate-y-1">
-        <div className={`aspect-[4/3] ${item.id === '2' ? 'bg-gray-900' : colors[index % colors.length]} relative overflow-hidden`}>
+        <div className={`aspect-[4/3] ${item.id === '2' || item.id === '3' ? 'bg-gray-900' : colors[index % colors.length]} relative overflow-hidden`}>
           {/* RWA 카드는 이미지 표시 */}
           {item.id === '1' ? (
             <img
@@ -49,6 +51,18 @@ const VisualizationCard: React.FC<{ item: VisualizationItem; index: number }> = 
               alt={item.title}
               className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
             />
+          ) : item.id === '3' ? (
+            <div className="w-full h-full bg-gradient-to-br from-gray-800 to-gray-900 flex items-center justify-center group-hover:scale-105 transition-transform duration-300">
+              {/* DeFi 트리맵 미리보기 (카테고리 색상) */}
+              <div className="grid grid-cols-3 gap-1 w-24 h-20">
+                <div className="col-span-2 row-span-2 bg-red-500/80 rounded"></div>
+                <div className="bg-violet-500/80 rounded"></div>
+                <div className="bg-orange-500/80 rounded"></div>
+                <div className="bg-green-500/80 rounded"></div>
+                <div className="bg-teal-500/80 rounded"></div>
+                <div className="bg-pink-500/80 rounded"></div>
+              </div>
+            </div>
           ) : (
             <>
               <div className="absolute inset-0 opacity-30">
@@ -201,7 +215,9 @@ export const VisualizationPage: React.FC = () => {
           </ScrollReveal>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {visualizationItems.map((item, index) => (
+            {[...visualizationItems]
+              .sort((a, b) => parseInt(b.id) - parseInt(a.id))
+              .map((item, index) => (
               <VisualizationCard key={item.id} item={item} index={index} />
             ))}
           </div>
