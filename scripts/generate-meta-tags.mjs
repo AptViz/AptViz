@@ -17,6 +17,12 @@ const visualizations = [
     description: '128개 Aptos Validator 노드의 전세계 분포를 3D 지구본으로 시각화',
     thumbnail: 'https://www.aptviz.xyz/visualization/Validator.png',
   },
+  {
+    id: '3',
+    title: 'Aptos DeFi Ecosystem Treemap',
+    description: 'Aptos 생태계의 Fees / TVL 트리맵 시각화 - DefiLlama 데이터 기반',
+    thumbnail: 'https://www.aptviz.xyz/visualization/fees-treemap.png',
+  },
 ];
 
 const newsItems = [
