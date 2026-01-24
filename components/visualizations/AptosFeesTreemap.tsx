@@ -213,22 +213,57 @@ export const AptosFeesTreemap: React.FC = () => {
   const currentCategories = viewMode === 'fees' ? sortedCategories : sortedTvlCategories;
   const currentColors = viewMode === 'fees' ? categoryColors : tvlCategoryColors;
 
-  // 앱별 트리맵 노드 생성
-  const appNodes = useMemo(() => {
-    const items = currentData.map(app => ({
-      id: app.name,
-      value: viewMode === 'fees' ? (app as AppData).fees30d : (app as TvlAppData).tvl,
-      color: currentColors[app.category] || '#64748b',
-      name: app.name,
-      category: app.category,
-      categoryKo: app.categoryKo,
-      change1m: app.change1m,
-      change7d: viewMode === 'tvl' ? (app as TvlAppData).change7d : undefined,
-      revenue30d: viewMode === 'fees' ? (app as AppData).revenue30d : undefined,
+  // 카테고리별 트리맵 노드 (헤더용)
+  const categoryNodes = useMemo(() => {
+    const items = currentCategories.map(cat => ({
+      id: cat.category,
+      value: viewMode === 'fees' ? (cat as typeof sortedCategories[0]).totalFees : (cat as typeof sortedTvlCategories[0]).totalTvl,
+      color: cat.color,
+      name: cat.category,
+      category: cat.category,
+      categoryKo: cat.categoryKo,
     }));
 
     return squarify(items, 0, 0, viewBox.width, viewBox.height);
-  }, [viewMode, currentData, currentColors]);
+  }, [viewMode, currentCategories]);
+
+  // 각 카테고리 내 앱별 트리맵 노드 생성
+  const appNodesByCategory = useMemo(() => {
+    const result: Record<string, TreemapNode[]> = {};
+
+    categoryNodes.forEach(catNode => {
+      const categoryApps = currentData.filter(app => app.category === catNode.category);
+
+      if (categoryApps.length === 0) return;
+
+      // 헤더 영역 (카테고리 노드의 상단 18px)
+      const headerHeight = Math.min(22, catNode.height * 0.12);
+      const contentY = catNode.y + headerHeight;
+      const contentHeight = catNode.height - headerHeight;
+
+      const items = categoryApps.map(app => ({
+        id: app.name,
+        value: viewMode === 'fees' ? (app as AppData).fees30d : (app as TvlAppData).tvl,
+        color: catNode.color,
+        name: app.name,
+        category: app.category,
+        categoryKo: app.categoryKo,
+        change1m: app.change1m,
+        change7d: viewMode === 'tvl' ? (app as TvlAppData).change7d : undefined,
+        revenue30d: viewMode === 'fees' ? (app as AppData).revenue30d : undefined,
+      }));
+
+      result[catNode.category] = squarify(
+        items,
+        catNode.x,
+        contentY,
+        catNode.width,
+        contentHeight
+      );
+    });
+
+    return result;
+  }, [viewMode, currentData, categoryNodes]);
 
   const handleAppClick = (node: TreemapNode, e: React.MouseEvent) => {
     e.stopPropagation();
@@ -358,71 +393,114 @@ export const AptosFeesTreemap: React.FC = () => {
           style={{ minHeight: '500px' }}
         >
           <AnimatePresence mode="wait">
-            {appNodes.map((node, index) => {
-              const isHovered = hoveredNode === node.id;
-              const fontSize = getFontSize(node.width, node.height, node.name);
-              const showText = shouldShowText(node.width, node.height);
-              const showValue = shouldShowValue(node.width, node.height);
+            {categoryNodes.map((catNode, catIndex) => {
+              const headerHeight = Math.min(22, catNode.height * 0.12);
+              const apps = appNodesByCategory[catNode.category] || [];
+              const showHeader = catNode.width > 60 && catNode.height > 40;
 
               return (
                 <motion.g
-                  key={`${viewMode}-${node.id}`}
+                  key={`${viewMode}-cat-${catNode.id}`}
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
                   exit={{ opacity: 0 }}
-                  transition={{ delay: index * 0.01 }}
-                  onMouseEnter={() => setHoveredNode(node.id)}
-                  onMouseLeave={() => setHoveredNode(null)}
-                  onClick={(e) => handleAppClick(node, e)}
-                  style={{ cursor: 'pointer' }}
+                  transition={{ delay: catIndex * 0.02 }}
                 >
-                  <rect
-                    x={node.x + 1}
-                    y={node.y + 1}
-                    width={Math.max(0, node.width - 2)}
-                    height={Math.max(0, node.height - 2)}
-                    fill={node.color}
-                    fillOpacity={isHovered ? 1 : 0.85}
-                    stroke={isHovered ? 'white' : '#1f2937'}
-                    strokeWidth={isHovered ? 2 : 1}
-                    rx={2}
-                    className="transition-all duration-150"
-                  />
-
-                  {showText && (
+                  {/* 카테고리 헤더 배경 */}
+                  {showHeader && (
                     <>
-                      {/* 앱 이름 */}
+                      <rect
+                        x={catNode.x + 1}
+                        y={catNode.y + 1}
+                        width={Math.max(0, catNode.width - 2)}
+                        height={headerHeight - 1}
+                        fill={catNode.color}
+                        fillOpacity={0.95}
+                      />
                       <text
-                        x={node.x + node.width / 2}
-                        y={node.y + node.height / 2 - (showValue ? 8 : 0)}
-                        fontSize={fontSize}
+                        x={catNode.x + 6}
+                        y={catNode.y + headerHeight / 2 + 1}
+                        fontSize={Math.min(12, catNode.width / 8)}
                         fontWeight="bold"
                         fill="white"
-                        textAnchor="middle"
                         dominantBaseline="middle"
                         className="pointer-events-none"
-                        style={{ textShadow: '0 1px 3px rgba(0,0,0,0.7)' }}
+                        style={{ textShadow: '0 1px 2px rgba(0,0,0,0.5)' }}
                       >
-                        {node.name}
+                        {lang === 'ko' ? catNode.categoryKo : catNode.category}
                       </text>
-
-                      {/* 금액 표시 */}
-                      {showValue && (
-                        <text
-                          x={node.x + node.width / 2}
-                          y={node.y + node.height / 2 + fontSize - 4}
-                          fontSize={Math.max(10, fontSize - 3)}
-                          fontWeight="600"
-                          fill="rgba(255,255,255,0.85)"
-                          textAnchor="middle"
-                          dominantBaseline="middle"
-                          className="pointer-events-none"
-                        >
-                          {formatValue(node.value)}
-                        </text>
-                      )}
                     </>
                   )}
+
+                  {/* 카테고리 내 앱들 */}
+                  {apps.map((node, index) => {
+                    const isHovered = hoveredNode === node.id;
+                    const fontSize = getFontSize(node.width, node.height, node.name);
+                    const showText = shouldShowText(node.width, node.height);
+                    const showValue = shouldShowValue(node.width, node.height);
+
+                    return (
+                      <motion.g
+                        key={`${viewMode}-${node.id}`}
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        exit={{ opacity: 0 }}
+                        transition={{ delay: catIndex * 0.02 + index * 0.01 }}
+                        onMouseEnter={() => setHoveredNode(node.id)}
+                        onMouseLeave={() => setHoveredNode(null)}
+                        onClick={(e) => handleAppClick(node, e)}
+                        style={{ cursor: 'pointer' }}
+                      >
+                        <rect
+                          x={node.x + 1}
+                          y={node.y + 1}
+                          width={Math.max(0, node.width - 2)}
+                          height={Math.max(0, node.height - 2)}
+                          fill={node.color}
+                          fillOpacity={isHovered ? 1 : 0.75}
+                          stroke={isHovered ? 'white' : '#1f2937'}
+                          strokeWidth={isHovered ? 2 : 1}
+                          rx={2}
+                          className="transition-all duration-150"
+                        />
+
+                        {showText && (
+                          <>
+                            {/* 앱 이름 */}
+                            <text
+                              x={node.x + node.width / 2}
+                              y={node.y + node.height / 2 - (showValue ? 8 : 0)}
+                              fontSize={fontSize}
+                              fontWeight="bold"
+                              fill="white"
+                              textAnchor="middle"
+                              dominantBaseline="middle"
+                              className="pointer-events-none"
+                              style={{ textShadow: '0 1px 3px rgba(0,0,0,0.7)' }}
+                            >
+                              {node.name}
+                            </text>
+
+                            {/* 금액 표시 */}
+                            {showValue && (
+                              <text
+                                x={node.x + node.width / 2}
+                                y={node.y + node.height / 2 + fontSize - 4}
+                                fontSize={Math.max(10, fontSize - 3)}
+                                fontWeight="600"
+                                fill="rgba(255,255,255,0.85)"
+                                textAnchor="middle"
+                                dominantBaseline="middle"
+                                className="pointer-events-none"
+                              >
+                                {formatValue(node.value)}
+                              </text>
+                            )}
+                          </>
+                        )}
+                      </motion.g>
+                    );
+                  })}
                 </motion.g>
               );
             })}

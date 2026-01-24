@@ -11,7 +11,8 @@
       "Bash(git commit -m \"$\\(cat <<''EOF''\nMerge remote changes with Validators Globe visualization\n\n- Integrate Validators Globe as first slide in Hero carousel\n- Keep RWA Partnership as second slide\n- Resolve image path conflicts\n- Update Active Validators to 128 with click-through link\n\nCo-Authored-By: Claude Opus 4.5 <noreply@anthropic.com>\nEOF\n\\)\")",
       "Bash(dir /s /b *.png)",
       "Bash(findstr:*)",
-      "WebFetch(domain:www.tableau.com)"
+      "WebFetch(domain:www.tableau.com)",
+      "Bash(npm run build:*)"
     ]
   }
 }
