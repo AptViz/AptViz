@@ -1,8 +1,5 @@
 {
   "rewrites": [
-    { "source": "/news/:id", "destination": "/news/:id/index.html" },
-    { "source": "/visualization/:id", "destination": "/visualization/:id/index.html" },
-    { "source": "/deep-dive/:id", "destination": "/" },
     { "source": "/((?!.*\\.).*)", "destination": "/" }
   ]
 }
